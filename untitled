@@ -1,0 +1,8 @@
+
+      function findlinkednode(id){
+       for (j=0;j<linkedArray2.length;j++){ 
+         var linkedNode=linkedArray2[j];
+         if(linkedNode.id==id){return linkedNode;}
+             }
+        return "none";
+     }
