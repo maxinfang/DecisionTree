@@ -20,30 +20,59 @@
       <script type="text/javascript" src="correctAnswer.js"></script>
      
       <style>
-     .container {  
-          position:absolute; 
-          width:100px; 
-         
-        }  
-     .connectorClass{
-        z-index:-1;
-        } 
-     .datatable {  
-    display: table-cell;
-    vertical-align: middle;
-    height: 50px;
-    
- 
-}  .box {
+     .box {
   
   position: fixed;
   background: #fee;
 }
-     input[type=text]
-{         width:50px;   
+     .container {  
+          position:absolute; 
+          width:100px;  
         }  
-        p{
+        .droplist{
+        position:relative;
+        z-index:1;
+        width:100px;
+        }
+  .connectorClass{
+        position:absolute; 
+        z-index:1;
+        } 
+   ._jsPlumb_source_hover{
+          position:relative; 
+          z-index:100;
+        }
+   ._jsPlumb_endpoint_anchor_{
+        position:relative; 
+          z-index:100;}
+  .datatable {  
+          position:relative; 
+    display: table-cell;
+    vertical-align: middle;
+    height: 50px; 
+          z-index:1;
+ 
+}  .box { 
+  position: relative;
+  background: transparent;
+  z-index:50;
+}
+      input[type=text]
+{     width:50px;   
+}
+    p{position:relative;
           color:red
+ }
+    #containment_limit{
+          width:99%;
+          height:98%;
+          border-style:solid;
+          border-color:black;
+          border-width:0px;
+          margin-top:0px;
+          margin-bottom:2%;
+          margin-right:0px;
+          margin-left:0px;
         }
         </style>
        
