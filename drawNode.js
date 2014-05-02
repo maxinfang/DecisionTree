@@ -77,7 +77,8 @@ function drawnode(node){
       var probs;
   
    if (node.parentID!=""){        
-       prob=addtext("Prob");
+       
+          prob=addtext("Prob",node.prob);
       problabel=addlabel("Prob");
         
        $(prob).show();
@@ -86,7 +87,7 @@ function drawnode(node){
 
      }
      else{
-            prob=addtext("Prob",node.prob);
+         prob=addtext("Prob");
         problabel=addlabel("Prob");
          $(prob).hide();
         $(problabel).hide();
