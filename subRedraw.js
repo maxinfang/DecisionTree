@@ -199,16 +199,17 @@ setchildren();
                   
                     var ch =lnode.nextNodes; 
                     var maxemv=0;
+                    var   _array = new Array();
+                   
                    for(var l=0; l<ch.length; l++){
                     
-                      //find the largest emv node;
-                       if(ch[l].node.emv>maxemv)
-                        maxemv= ch[l].node.emv;
+                     _array.push(ch[l].node.emv);
+                    
                     
                     }
-                    
+                      var maxemv=Math.max.apply(Math,_array);
                     for(var l=0; l<ch.length; l++){
-                    
+                
                       //find the largest emv node;
                        if(ch[l].node.emv==maxemv)
                            { ch[l].node.prob=1;}
