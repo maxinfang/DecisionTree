@@ -45,21 +45,39 @@
    ._jsPlumb_endpoint_anchor_{
         position:relative; 
           z-index:100;}
+        
   .datatable {  
-          position:relative; 
+    position:relative; 
     display: table-cell;
     vertical-align: middle;
     height: 50px; 
-          z-index:1;
- 
-}  .box { 
+    z-index:1; 
+}  
+        
+  .box { 
   position: relative;
   background: transparent;
   z-index:50;
 }
-      input[type=text]
-{     width:50px;   
+   input[type=text]
+{   display:block;  
+    width:50%;
+    float:right;
+    position:relative;   
+  
+
+ 
 }
+     label{
+      display: inline-block;  
+      overflow:hidden;
+      text-align: center; 
+      width:50%;
+      margin-bottom:8px;
+      position:relative;
+          margin-top:4px;
+     
+       }
     p{position:relative;
           color:red
  }
