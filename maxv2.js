@@ -100,6 +100,7 @@ $(document).ready(function()  {
     //initialize jsPlumb
      
     /*initialize endpoint Class*/
+  
       jsPlumb.Defaults.Container = $("#canvasdiv");
    
       jsPlumb.DefaultDragOptions = {  cursor:"pointer",
@@ -153,31 +154,57 @@ $(document).ready(function()  {
             $(el).children().each(function(noo,ell){
         if($(ell).hasClass("Prob")){
         $(ell).show();
-        }
-         
-          
-        } )
-          
-              }
-          
+        }  
+        } ) 
+              } 
         });
     
     
-       //document.getElementById(" ").style.zIndex="1";
+       
     
         });
+  
+  
    //initialzie button action to different buttons;
    jsPlumb.bind("connectionDetached", function(info, originalEvent) {
-  var conn = info.connection;
-     
-     
+  var conn = info.connection; 
+     console.log(conn);
    var parentId=$('#'+conn.sourceId).parent().attr('id');
         var childId=$('#'+conn.targetId).parent().attr('id');
         var  paId=$('#'+conn.sourceId).parent().attr('id');
         var node = findnode(childId);
+       var beforeId= $('#'+info.targetId).parent().attr('id');
+      // console.log("thisnodepriviousid"+beforeId);
+      
+     if(beforeId!=childId){
+       var pendingnode = findnode(beforeId);;
+        pendingnode.parentID="";
+        updateNode(pendingnode,"parentID");
+       
+       $("#"+beforeId).children().each(function(no,el){
+    
+        if($(el).hasClass("droplist")){
+         $(el).hide();
+        } 
+    
+    
+          if($(el).hasClass("datatable")){
         
+            $(el).children().each(function(noo,ell){
+        if($(ell).hasClass("Prob")){
+        $(ell).hide();
+        }
+          
+        } ) 
+              }
+    
+    
+        });
+     }
+     
      if(paId!=childId) {
         node.parentID="";
+        console.log("this nodeid:"+node.id);
         updateNode(node,"parentID");
         
         

@@ -112,7 +112,7 @@ function generateID(myNodes){
  function addNewNode(node){
 
      myNodes.push(node);
-     sentToparentPage()
+     sentToparentPage();
    }
 function  emptymyNodes(){
 
@@ -163,7 +163,7 @@ function  giveWarning(){
 }
 
 function sentToparentPage()
-{
+{ console.log(myNodes);
   giveWarning();
   var answervalue = serialise(myNodes); 
   
