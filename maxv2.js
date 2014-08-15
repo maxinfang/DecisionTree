@@ -12,7 +12,7 @@ if(array[0] != "question" && array[0] !='"question'){
  }; 
 
  var mode="student";
- var history=""; 
+ var _history=""; 
  var namespaceforSub = array[0]+"_"+array[1]+"_submission";
  var namespaceforEntry = array[0]+"_"+array[1]+"_entry"; 
  var namespaceforLabel= array[0]+"_"+array[1]+"_label"; 
@@ -117,20 +117,20 @@ $(document).ready(function()  {
    //check wehter we need reload or not
 
   if(mode=="submission") { 
-                          history= getSubmission();
+                          _history= getSubmission();
                            
     
     }
   
   
-  if(mode=="student"){history=getHistory();
-                      console.log("studentpage:"+history);}
+  if(mode=="student"){_history=getHistory();
+                      console.log("studentpage:"+_history);}
   
-  if(history == "" ){ 
+  if(_history == "" ){ 
       }
       else{ 
         
-       redraw(history); 
+       redraw(_history); 
        addConnections(myNodes);
       
       }
