@@ -1,7 +1,9 @@
 
 <html lang="en">
     <head>  
-        <title>Max Decision tree and input images Demo</title>  
+        <title>Max Decision tree and input images Demo</title> 
+     
+      
         <script type="text/javascript" src="raphael.js"></script>  
       <script src="jquery.js"></script>
     <script src="jquery-ui-1.10.3.custom.js"></script>
@@ -17,11 +19,13 @@
        <script type="text/javascript" src="connection.js"></script>
       <script type="text/javascript" src="correctAnswer.js"></script>
      
-      
       <style>
-        .body{      }
-   
-        .container {  
+     .box {
+  
+  position: fixed;
+  background: #fee;
+}
+     .container {  
           position:absolute; 
           width:100px;  
         }  
@@ -32,7 +36,7 @@
         }
   .connectorClass{
         position:absolute; 
-        z-index:-1;
+        z-index:1;
         } 
    ._jsPlumb_source_hover{
           position:relative; 
@@ -40,42 +44,34 @@
         }
    ._jsPlumb_endpoint_anchor_{
         position:relative; 
-          z-index:100;
-    }
+          z-index:100;}
+        
   .datatable {  
     position:relative; 
     display: table-cell;
     vertical-align: middle;
     height: 50px; 
-          z-index:1;
- 
-}  .box { 
+    z-index:1; 
+}  
+        
+  .box { 
   position: relative;
   background: transparent;
   z-index:50;
 }
-      
    input[type=text]
 {   display:block;  
     width:50%;
     float:right;
     position:relative;   
-          margin-top:2px;
-  
+    margin-top:2px;
 
  
 }
-          div.delete{ 
-           position:absolute;
-          top: -15px;
-          left:80px;  
-          z-index:11111111111;
-    
-   }  
      label{
       display: inline-block; 
-          *display:inline;
-      *zoom:1;  
+      *display:inline;
+      *zoom:1; 
       overflow:hidden;
      
       width:50%;
@@ -85,8 +81,7 @@
      
        }
     p{position:relative;
-          color:red;
-          z-index:-1;
+          color:red
  }
     #containment_limit{
           width:99%;
@@ -98,16 +93,20 @@
           margin-bottom:2%;
           margin-right:0px;
           margin-left:0px;
-          z-index:1000;
         }
-        </style> 
+        </style>
        
      </head>  
  <body> 
-    <div id='canvasdiv'>   
-   <input id='answer' type=text style="display:none"> 
-    <p id='warn'>  </p> 
-   </ div>
-   </body>
+    <div id='canvasdiv'>  <script>
+      
+   
+ 
+   </script>
+     
+   <input id='answer' type=text style="display:none">
+  <br>
+    <p id='warn'>  </p>
+  </body>
 </html>
  

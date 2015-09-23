@@ -121,8 +121,22 @@ function  emptymyNodes(){
     sentToparentPage();
    }
 
+  function checkInp(value)
+{
+    var x=value ;
+    var regex=/^[-+]?[0-9]*\.?[0-9]+$/;
+    if (!x.match(regex))
+      {
+        alert("1.Must input numbers 2.check minus ");
+        return false;
+      }
+ }
+
+
 
  function updateNode(node,property){
+   
+      //falidate first.
       
       var myNodesArray=myNodes;
       

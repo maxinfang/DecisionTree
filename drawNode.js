@@ -51,7 +51,11 @@ function drawnode(node){
 
   }  
   
-     $(dropL).change(function() { 
+     $(dropL).oninput(function() { 
+       
+       
+       
+       
       var indexvalue= $( "#"+dropLid+" option:selected" ).val();
       node.value= indexvalue;
       updateNode(node,"value");
@@ -106,23 +110,35 @@ function drawnode(node){
         $(problabel).hide();
         $(probs).hide();
      } 
-  
-  
+ 
+ 
        
-         var br = document.createElement('br')  
+   var br = document.createElement('br')  
   $(datadiv).append(br);
       $(datadiv).append(problabel);
       $(datadiv).append(prob);
       $(datadiv).append(probs);
        
-      $(prob).change(function() {
+      $(prob).oninput(function() {
+        
+          if(! checkInp($(prob).val())){
            node.prob= $(prob).val();
            updateNode(node,"prob");
+          } else{
+           
+          }
+        
          
 });   
-     $(emv).change(function() {
-           node.emv= $(emv).val();
-           updateNode(node,"emv");
+     $(emv).oninput(function() {
+       
+       if(! checkInp($(emv).val())){
+           node.emv= $(emv).val(); 
+           updateNode(node,"prob");
+       }
+       else{
+           
+       }
          
 });    
   

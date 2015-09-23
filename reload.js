@@ -1,6 +1,7 @@
 function redraw(history){
   
-     myNodes=deserialise(history);
+    if(history == "No answer") { myNodes = [];}
+  else{ myNodes=deserialise(history);}
   
      if (myNodes == []) return;
        
