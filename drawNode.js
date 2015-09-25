@@ -51,10 +51,8 @@ function drawnode(node){
 
   }  
   
-     $(dropL).oninput(function() { 
-       
-       
-       
+     $(dropL).change(function() { 
+        
        
       var indexvalue= $( "#"+dropLid+" option:selected" ).val();
       node.value= indexvalue;
@@ -86,7 +84,7 @@ function drawnode(node){
   if(node.emv==""){
      emv=addtext("EMV");}
      else{  
-   emv= addtext("EMV",node.emv)}
+     emv= addtext("EMV",node.emv)}
   
      $(datadiv).append(emv); 
       var prob;
@@ -104,9 +102,9 @@ function drawnode(node){
 
      }
      else{
-         prob=addtext("Prob");
+        prob=addtext("Prob");
         problabel=addlabel("Prob");
-         $(prob).hide();
+        $(prob).hide();
         $(problabel).hide();
         $(probs).hide();
      } 
@@ -119,7 +117,7 @@ function drawnode(node){
       $(datadiv).append(prob);
       $(datadiv).append(probs);
        
-      $(prob).oninput(function() {
+      $(prob).change(function() {
         
           if(! checkInp($(prob).val())){
            node.prob= $(prob).val();
@@ -130,7 +128,37 @@ function drawnode(node){
         
          
 });   
-     $(emv).oninput(function() {
+  
+  emv.addEventListener("input", function(e) {
+    
+       var num = emv.value;
+    var regex=/^[-+]?[0-9]*\.?[0-9]*$/;
+    if (!num.match(regex)) {
+        alert ("It is not a number");
+        emv.value= emv.defaultValue;
+    }else{
+        emv.defaultValue= num;
+    }    
+    
+  }, false);
+  
+   prob.addEventListener("input", function(e) {
+    
+       var num = prob.value;
+    var regex=/^[-+]?[0-9]*\.?[0-9]*$/;
+    if (!num.match(regex)) {
+        alert ("It is not a number");
+        prob.value= prob.defaultValue;
+    }else{
+        prob.defaultValue= num;
+    }    
+    
+  }, false);
+    
+    
+    
+    
+     $(emv).change(function() {
        
        if(! checkInp($(emv).val())){
            node.emv= $(emv).val(); 

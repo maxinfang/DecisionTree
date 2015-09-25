@@ -39,10 +39,7 @@ else{
     
     var  tempname= namespaceforEntry+"_"+seq; 
     var element=parent.document.getElementById(tempname);
-    var parentintputbox=parent.document.getElementsByName("ans.0.0");
-    
-   // console.log();
-  parentintputbox[0].style.display = "none";
+   
     if ( typeof element !="undefined"&& element !=null ) { 
       
       var bu =element.innerHTML;
@@ -127,7 +124,13 @@ $(document).ready(function()  {
     }
   
   
-  if(mode=="student"){_history=getHistory();
+  if(mode=="student"){
+     var parentintputbox=parent.document.getElementsByName("ans.0.0");
+    
+   // console.log();
+    parentintputbox[0].style.display = "none";
+    
+    _history=getHistory();
                       console.log("studentpage:"+_history);}
   
   if(_history == "" ){ 
