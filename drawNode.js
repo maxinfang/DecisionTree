@@ -119,35 +119,29 @@ function drawnode(node){
        
    
    if(mode=="student"){
-  emv.addEventListener("input", function(e) {
-    
-       var num = emv.value;
-    var regex=/^[-+]?[0-9]*\.?[0-9]*$/;
-    var mregex=/[－]+/;
-    if (!num.match(regex)) { 
-        message="Numbers must only contain -.1234567890";
-      if(num.match(mregex)){
-         message +="\nHint: Are you using the standard negative sign? ";  
-        }
-        alert (message);
+  emv.addEventListener("input", function(e) { 
+    var num = emv.value;
+     var message = validateNum(num);
+     if (message!="true"){
+         alert(message);
         emv.value= emv.defaultValue;
-        
-    }else{
-        emv.defaultValue= num;
-    }    
+         }else{
+        emv.defaultValue= num; 
+      }
     
   }, false);
   
    prob.addEventListener("input", function(e) {
     
-       var num = prob.value;
-    var regex=/^[-+]?[0-9]*\.?[0-9]*$/;
-    if (!num.match(regex)) {
-        alert ("It is not a number");
+    var num = prob.value; 
+    var message = validateNum( num);
+    if (message!="true"){
+         alert(message);
         prob.value= prob.defaultValue;
-    }else{
+         }else{
         prob.defaultValue= num;
-    }    
+           
+      }
     
   }, false);
     
