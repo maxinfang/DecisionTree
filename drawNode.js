@@ -117,18 +117,8 @@ function drawnode(node){
       $(datadiv).append(prob);
       $(datadiv).append(probs);
        
-      $(prob).change(function() {
-        
-          if(! checkInp($(prob).val())){
-           node.prob= $(prob).val();
-           updateNode(node,"prob");
-          } else{
-           
-          }
-        
-         
-});   
-  
+   
+   if(mode=="student"){
   emv.addEventListener("input", function(e) {
     
        var num = emv.value;
@@ -155,7 +145,7 @@ function drawnode(node){
     
   }, false);
     
-    
+
     
     
      $(emv).change(function() {
@@ -169,6 +159,19 @@ function drawnode(node){
        }
          
 });    
+     $(prob).change(function() {
+        
+          if(! checkInp($(prob).val())){
+           node.prob= $(prob).val();
+           updateNode(node,"prob");
+          } else{
+           
+          }
+        
+         
+});   
+  
+  }  
   
   $("#"+deleteId).click(function() { 
     if (confirm('Delete this node?')) {   
