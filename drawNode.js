@@ -123,9 +123,15 @@ function drawnode(node){
     
        var num = emv.value;
     var regex=/^[-+]?[0-9]*\.?[0-9]*$/;
-    if (!num.match(regex)) {
-        alert ("It is not a number");
+    var mregex=/[－]+/;
+    if (!num.match(regex)) { 
+        message="Numbers must only contain -.1234567890";
+      if(num.match(mregex)){
+         message +="\nHint: Are you using the standard negative sign? ";  
+        }
+        alert (message);
         emv.value= emv.defaultValue;
+        
     }else{
         emv.defaultValue= num;
     }    
