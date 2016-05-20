@@ -125,7 +125,7 @@ $(document).ready(function()  {
   
   
   if(mode=="student"){
-     var parentintputbox=parent.document.getElementsByName("ans.0.0");
+    var parentintputbox=$("input[name^='ans.'][name$='.0']", window.parent.document) //parent.document.getElementsByName("ans.0.0");
     
    // console.log();
     parentintputbox[0].style.display = "none";
