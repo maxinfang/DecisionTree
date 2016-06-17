@@ -217,15 +217,21 @@ function sentToparentPage()
   var i = 0;
   var iarr = 0;
   var att;
+    var reloadflag= false;
+    var statuschange  = false;
   for(; i < elem.length; i++) {
         att = elem[i].getAttribute("type");
     if(att =="text") {
-       elem[i].value   = answervalue;
-    }  
+        if( elem[i].value == "" &&  answervalue !=""){statuschange  =true;}
+       elem[i].value   = answervalue; 
+      }  
+     
          
     }
     
-   
+   if (statuschange   == true){ 
+     console.log("relaod");
+   reloadiframe();}
    console.log("save:"+answervalue);
   }
   
@@ -238,6 +244,12 @@ function sentToparentPage()
   }
 }
 
+
+function reloadiframe()
+{
+window.location.reload();
+
+}
  
 function deleteNode(node)
 {
