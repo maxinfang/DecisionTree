@@ -4,7 +4,7 @@ var Color="#fa0000";
 if(mode=="correct") { Color= "#5cc902"};
 if(mode=="submission") { Color= "#0060bf"};  
 
-function addShape(type,dragzone){
+function addShape(type,dragzone6){
   if (type=="T") {addTriangle(dragzone);}
   if (type=="C") {addCircle(dragzone);}
   if (type=="S") {addRect(dragzone);}
