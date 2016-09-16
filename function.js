@@ -231,7 +231,8 @@ function sentToparentPage()
     
    if (statuschange   == true){ 
      console.log("relaod");
-   reloadiframe();}
+   parent. pageFullyLoaded();
+   console.log("call orignal function");}
    console.log("save:"+answervalue);
   }
   

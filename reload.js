@@ -11,7 +11,8 @@ function redraw(history){
        console.log(node);
          drawnode(node);
        } 
-     if(mode!="submission") {sentToparentPage();}
+  
+    if(mode!="submission") {sentToparentPage();}
   
 }
     if(mode =="submission"){

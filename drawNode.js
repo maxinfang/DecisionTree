@@ -1,6 +1,6 @@
 function drawnode(node){
       
-      
+     
       newdiv= document.createElement('div'); 
       $(newdiv).attr('id',node.id);
       var containerId = $(newdiv).attr('id');
@@ -17,7 +17,7 @@ function drawnode(node){
       
   
       $("#canvasdiv").append(newdiv);
-  
+    
     deletezone= document.createElement('div'); 
     var elem = document.createElement("img");
     elem.setAttribute("src", " icon-error.png");
@@ -31,7 +31,7 @@ function drawnode(node){
       $(dragzone).uniqueId();
       var currentId=$(dragzone).attr("id");
      var deleteId  =$(elem).attr("id");
-     $(newdiv).append(deletezone); 
+    if(mode =="student") { $(newdiv).append(deletezone); } 
       $(newdiv).append(dragzone); 
        
       addShape(node.type,dragzone); 

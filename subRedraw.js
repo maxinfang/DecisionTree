@@ -262,7 +262,7 @@ setchildren();
          drawnode(node);
    }
      // redraw(history);
-        console.log("here");
+      
         
      // find rootnode and hide the prob;
         $("#"+rootnodeid).children().each(function(no,el){

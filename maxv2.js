@@ -117,7 +117,7 @@ $(document).ready(function()  {
      
    //check wehter we need reload or not
 
-  if(mode=="submission") { 
+  if(mode=="submission") { console.log("test");
                           _history= getSubmission();
                            
     
@@ -127,8 +127,8 @@ $(document).ready(function()  {
   if(mode=="student"){
     var parentintputbox=$("input[name^='ans.'][name$='.0']", window.parent.document) //parent.document.getElementsByName("ans.0.0");
           
-    parentintputbox[0].addEventListener("input", function(e) 
-        { alert("message");
+    parentintputbox[0].addEventListener("change", function(e) 
+        { parent.location.reload();
        }, false);
      
     parentintputbox[0].style.display = "none";
