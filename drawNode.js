@@ -119,17 +119,25 @@ function drawnode(node){
        
    
    if(mode=="student"){
-  emv.addEventListener("input", function(e) { 
-    var num = emv.value;
-     var message = validateNum(num);
-     if (message!="true"){
+ 
+     
+   emv.addEventListener("input", function(e) {
+    
+    var num = emv.value; 
+    var message = validateNum( num);
+    if (message!="true"){
          alert(message);
-        emv.value= emv.defaultValue;
+        emv.value= node.emv;
          }else{
-        emv.defaultValue= num; 
+        
+        node.emv=  num; 
+        updateNode(node,"emv");
+           
       }
     
-  }, false);
+  }, false);  g   
+     
+     
   
    prob.addEventListener("input", function(e) {
     
@@ -137,9 +145,10 @@ function drawnode(node){
     var message = validateNum( num);
     if (message!="true"){
          alert(message);
-        prob.value= prob.defaultValue;
+        prob.value= node.prob;  
          }else{
-        prob.defaultValue= num;
+        node.prob= num; 
+        updateNode(node,"prob");
            
       }
     
@@ -148,11 +157,12 @@ function drawnode(node){
 
     
     
-     $(emv).change(function() {
+  /*   $(emv).change(function() {
+        //  console.log($(emv).val());
        
        if(! checkInp($(emv).val())){
-           node.emv= $(emv).val(); 
-           updateNode(node,"prob");
+           node.emv= $(emv).val();  
+           updateNode(node,"emv");
        }
        else{
            
@@ -169,7 +179,7 @@ function drawnode(node){
           }
         
          
-});   
+});   */
   
   }  
   

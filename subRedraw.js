@@ -148,6 +148,7 @@ $(document).ready(function()  {
               }
           
           //console.log(children);
+          linkedNode.parentlist="add list here";
           linkedNode.nextNodes=children; 
         }
       }
@@ -173,6 +174,7 @@ $(document).ready(function()  {
         }
          
         } 
+        
        node.level=max+1;
         return node.level
        
@@ -183,13 +185,15 @@ $(document).ready(function()  {
               
   }
 setchildren();
+        
+        console.log(linkedArray);
         var rootnode = findrootnode();
         var rootnodeid = rootnode.node.id;
         recursive(rootnode);
            
            
         var deep =rootnode.level
-        
+        console.log(rootnode);
         for(var n=2; n<=deep ;n++){ 
               for(var m=0; m<linkedArray2.length;m++){ 
                 var  lnode= linkedArray2[m];
@@ -244,22 +248,14 @@ setchildren();
               }
         }
            
-           
-           
-        
-        
-      
-        
-    
-        
-      
-       
+         
      //  recursiveemv(rootnode); 
     //  recursive(rootnode); 
         
    for(n=0; n<myNodes.length;n++){ 
          var node= myNodes[n]; 
          drawnode(node);
+         console.log(node);
    }
      // redraw(history);
       

@@ -4,7 +4,21 @@ var Color="#fa0000";
 if(mode=="correct") { Color= "#5cc902"};
 if(mode=="submission") { Color= "#0060bf"};  
 
-function addShape(type,dragzone6){
+function addShapewithColor(type,dragzone,color){
+  
+  
+  
+  if (type=="T") {addTriangle(dragzone);}
+  if (type=="C") {addCircle(dragzone);}
+  if (type=="S") {addRect(dragzone);}
+  if (type=="H") {addHexagon(dragzone);}
+  if (type=="D") {addDiamond(dragzone);}
+
+
+}
+
+
+function addShape(type,dragzone){
   if (type=="T") {addTriangle(dragzone);}
   if (type=="C") {addCircle(dragzone);}
   if (type=="S") {addRect(dragzone);}

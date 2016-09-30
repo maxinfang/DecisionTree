@@ -127,9 +127,9 @@ $(document).ready(function()  {
   if(mode=="student"){
     var parentintputbox=$("input[name^='ans.'][name$='.0']", window.parent.document) //parent.document.getElementsByName("ans.0.0");
           
-    parentintputbox[0].addEventListener("change", function(e) 
-        { parent.location.reload();
-       }, false);
+  //  parentintputbox[0].addEventListener("change", function(e) 
+    //    { parent.location.reload();
+  //     }, false);
      
     parentintputbox[0].style.display = "none";
     

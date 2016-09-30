@@ -151,11 +151,12 @@ function  emptymyNodes(){
 
  {
    var x=value ;
-    regex=/^[-+]?[0-9]*\.?[0-9]*$/;;
+   regex=/^[-+]?[0-9]*\.?[0-9]*$/;
     if (!x.match(regex))
-      { 
-        return false;
-      }
+     { 
+       return false;
+     }
+   return true;
 
  }
 
