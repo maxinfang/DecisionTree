@@ -135,7 +135,7 @@ function drawnode(node){
            
       }
     
-  }, false);  g   
+  }, false);    
      
      
   

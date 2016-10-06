@@ -152,7 +152,9 @@ $(document).ready(function()  {
         var childId=$('#'+conn.targetId).parent().attr('id');
         var node = findnode(childId);
         node.parentID=parentId;
+        node.value="0";
         updateNode(node,"parentID"); 
+        updateNode(node,"value");
       
         $("#"+childId).children().each(function(no,el){
            if($(el).hasClass("droplist")){
@@ -214,8 +216,13 @@ $(document).ready(function()  {
      
      if(paId!=childId) {
         node.parentID="";
+        node.value="";
+     
         console.log("this nodeid:"+node.id);
+        updateNode(node,"value");
         updateNode(node,"parentID");
+        console.log(node);
+         
         
         
   $("#"+childId).children().each(function(no,el){
