@@ -158,7 +158,8 @@ $(document).ready(function()  {
       
         $("#"+childId).children().each(function(no,el){
            if($(el).hasClass("droplist")){
-        $(el).show();
+                $(el).val(0);
+                $(el).show();
             
         } 
           
@@ -268,6 +269,7 @@ $(document).ready(function()  {
          var node= new Node();
          node.id =generateID(myNodes);
          node.type="S";
+         node.value=0;  
          node= drawnode(node);
          addNewNode(node);
   });

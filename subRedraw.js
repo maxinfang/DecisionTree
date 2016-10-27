@@ -141,17 +141,29 @@ $(document).ready(function()  {
                 var node = thisnode.node;
                 var pID= thisnode.node.parentID;  
                if(pID== linkedNode.id){
-                 thisnode.prevNode= linkedNode;
-
+                 thisnode.prevNode= linkedNode; 
                  children.push(thisnode); 
                 }; 
               }
           
           //console.log(children);
-          linkedNode.parentlist="add list here";
+         // var list= new Array(); 
+         // list.push('kiwi');
+         // linkedNode.parentlist=list;
           linkedNode.nextNodes=children; 
         }
       }
+        
+           function findrootnode(){
+        for(var n=0; n<linkedArray.length;n++){
+        var  rootnode= linkedArray[n];
+        var pid=rootnode.node.parentID;
+        if(pid=="") {  
+            return rootnode; };
+        }
+      } 
+    
+        
        
          function recursive(node){  
       var currentnode= node;
@@ -184,12 +196,44 @@ $(document).ready(function()  {
       return node.level;
               
   }
+        
+         
+   function setparentlist(node,pass){  
+     
+      var currentnode= node;
+      var nextnodes= currentnode.nextNodes;
+      var nodedata= currentnode.node;  
+     nodedata.parentlist=pass;
+     var newpass = pass.slice();
+     newpass.push(nodedata.value);
+    
+     
+       
+      var length= nextnodes.length; 
+      if( length>0) { 
+      for (var x=0;x<length;x++){ 
+             console.log("++++++++");
+             console.log(x,nextnodes[x],nodedata.value,newpass );
+             
+            console.log("++++++++");
+            var childnode = nextnodes[x];  
+           setparentlist(childnode,newpass.slice());  
+        
+        } 
+          
+      } 
+     
+  }     
+        
+        
 setchildren();
         
         console.log(linkedArray);
         var rootnode = findrootnode();
         var rootnodeid = rootnode.node.id;
         recursive(rootnode);
+       var pa= new Array();
+        setparentlist(rootnode,pa);
            
            
         var deep =rootnode.level

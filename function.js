@@ -33,7 +33,8 @@ function Node(id,type,parent,top,left,selectvalue,emv,prob){
        this.left=""; 
        this.value="";
        this.emv="";
-       this.prob="" 
+       this.prob="";
+       this.parentlist=[]; 
      }  
  
 function deserialise(string){
