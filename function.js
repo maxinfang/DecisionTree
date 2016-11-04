@@ -53,6 +53,16 @@ function Node(id,type,parent,top,left,selectvalue,emv,prob){
      }  
  
 function deserialise(string){
+  
+       
+       
+       if(string.indexOf('b') == -1){ 
+        var array= new Array();
+        return array;
+       
+       }
+  
+  
        var array= new Array();
        var stringnode=  string.split('a');
        //console.log(stringnode.length);

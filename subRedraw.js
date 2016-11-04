@@ -46,6 +46,7 @@ function getLabel(){
 
 function getsubmission(){
     var element= parent.document.getElementById(namespaceforSubmit);
+   
     return element.innerHTML;
  } 
 
@@ -104,6 +105,7 @@ $(document).ready(function()  {
       else{ 
       //caculate the nodes depending on email;
       myNodes=deserialise(history); 
+   
       myNodes_submission=deserialise(submission); 
       // find the end of child;
       // calculatNode(myNodes); 
@@ -275,18 +277,24 @@ $(document).ready(function()  {
        
         var rootnode = findrootnode();
         var rootnode_sub=findrootnode_sub();
+        
+       
         var rootnodeid = rootnode.node.id;
-        var rootnodeid_sub=rootnode_sub.node.id;
+        
+        if(typeof rootnode_sub != 'undefined' )
+          {
+            var rootnodeid_sub=rootnode_sub.node.id;
+            recursive(rootnode_sub);
+            var pa_sub=new Array(); 
+             setparentlist(rootnode_sub,pa_sub);
+          }
+        
         recursive(rootnode);
-        recursive(rootnode_sub);
+        
        var pa= new Array();
         setparentlist(rootnode,pa);
-       var pa_sub=new Array();
-        setparentlist(rootnode_sub,pa_sub);
-        
-      
          
-           
+          
         var deep =rootnode.level
         
         for(var n=2; n<=deep ;n++){ 
