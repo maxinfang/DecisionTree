@@ -25,7 +25,7 @@ function addConnection(node){
   
          
       var sourceid ;
-          console.log(node.parentID);
+         
       $("#"+node.parentID).children().each(function(no,el){
         if($(el).hasClass("_jsPlumb_endpoint_anchor_")){
           sourceid= el.id ;

@@ -3,7 +3,7 @@
  var questionId=this.frameElement.attributes.id.value; 
  
  var array = questionId.split("_");
-    console.log(array);
+    
  if(array[0] == "question"){  
     }; 
  
@@ -39,8 +39,8 @@
 
 function getLabel(){
     var element=  parent.document.getElementById(namespaceforLabel);
-  if (element == null) { console.log(questionId); return;}
-    console.log( element.innerHTML);
+  if (element == null) {   return;}
+     
     return element.innerHTML;
  } 
 
@@ -90,10 +90,12 @@ $(document).ready(function()  {
    //check wehter we need reload or not
   
   var history=""; 
+  var submission="";
   if(mode=="correct"){
     
     history = getCorrectAnswer();
-   
+    submission =getsubmission();
+    
     
     }
       
@@ -102,31 +104,40 @@ $(document).ready(function()  {
       else{ 
       //caculate the nodes depending on email;
       myNodes=deserialise(history); 
+      myNodes_submission=deserialise(submission); 
       // find the end of child;
       // calculatNode(myNodes); 
       var linkedArray= new Array(); 
       var linkedArray2= new Array(); 
+      
+      var linkdeArray_sub=new Array();
+      var linkedArray2_sub= new Array(); 
         
         
+    
         
       for(n=0; n<myNodes.length;n++){ 
        
       var node=myNodes[n];  
-       console.log(node);
+       
       var linkedNode= new NodeClass(node)
       //console.log(linkedNode);
       linkedArray.push(linkedNode);  
       linkedArray2.push(linkedNode);
+  }  
+      
+       for(n=0; n<myNodes_submission.length;n++){ 
+       
+      var node=myNodes_submission[n];  
+      
+      var linkedNode_sub= new NodeClass(node)
+      //console.log(linkedNode);
+      linkdeArray_sub.push(linkedNode_sub);  
+      linkedArray2_sub.push(linkedNode_sub);
   } 
+
         
-      function findrootnode(){
-        for(var n=0; n<linkedArray.length;n++){
-        var  rootnode= linkedArray[n];
-        var pid=rootnode.node.parentID;
-        if(pid=="") {  
-            return rootnode; };
-        }
-      } 
+        
      function setchildren(){
           
         for (j=0;j<linkedArray.length;j++){ 
@@ -145,14 +156,50 @@ $(document).ready(function()  {
                  children.push(thisnode); 
                 }; 
               }
-          
-          //console.log(children);
-         // var list= new Array(); 
-         // list.push('kiwi');
-         // linkedNode.parentlist=list;
+       
           linkedNode.nextNodes=children; 
         }
       }
+   
+        
+        
+        
+      
+     function setchildren_sub(){
+          
+        for (j=0;j<linkdeArray_sub.length;j++){ 
+          
+        var linkedNode=linkdeArray_sub[j];
+           
+           // linkedNode.node.parentID;
+          
+          var children= new Array(); 
+              for(var n=0; n<linkedArray2_sub.length;n++){ 
+                var  thisnode= linkedArray2_sub[n];  
+                var node = thisnode.node;
+                var pID= thisnode.node.parentID;  
+               if(pID== linkedNode.id){
+                 thisnode.prevNode= linkedNode; 
+                 children.push(thisnode); 
+                }; 
+              }
+       
+          linkedNode.nextNodes=children; 
+        }
+      }
+        
+      
+        
+        
+           function findrootnode_sub(){
+        for(var n=0; n<linkdeArray_sub.length;n++){
+        var  rootnode= linkdeArray_sub[n];
+        var pid=rootnode.node.parentID;
+        if(pid=="") {  
+            return rootnode; };
+        }
+      } 
+        
         
            function findrootnode(){
         for(var n=0; n<linkedArray.length;n++){
@@ -212,10 +259,7 @@ $(document).ready(function()  {
       var length= nextnodes.length; 
       if( length>0) { 
       for (var x=0;x<length;x++){ 
-             console.log("++++++++");
-             console.log(x,nextnodes[x],nodedata.value,newpass );
              
-            console.log("++++++++");
             var childnode = nextnodes[x];  
            setparentlist(childnode,newpass.slice());  
         
@@ -226,18 +270,25 @@ $(document).ready(function()  {
   }     
         
         
-setchildren();
-        
-        console.log(linkedArray);
+ setchildren();
+ setchildren_sub();       
+       
         var rootnode = findrootnode();
+        var rootnode_sub=findrootnode_sub();
         var rootnodeid = rootnode.node.id;
+        var rootnodeid_sub=rootnode_sub.node.id;
         recursive(rootnode);
+        recursive(rootnode_sub);
        var pa= new Array();
         setparentlist(rootnode,pa);
-           
+       var pa_sub=new Array();
+        setparentlist(rootnode_sub,pa_sub);
+        
+      
+         
            
         var deep =rootnode.level
-        console.log(rootnode);
+        
         for(var n=2; n<=deep ;n++){ 
               for(var m=0; m<linkedArray2.length;m++){ 
                 var  lnode= linkedArray2[m];
@@ -296,11 +347,44 @@ setchildren();
      //  recursiveemv(rootnode); 
     //  recursive(rootnode); 
         
+        
+        
+    //
+    
+        
+     
+        
+    for(n=0; n<myNodes.length;n++){ 
+         var node=  myNodes[n];
+          node.color="orange";
+         for(m=0; m<myNodes_submission.length;m++){  
+         var sub_node= myNodes_submission[m];  
+          if(sub_node.value == node.value )
+           { 
+             if(node.parentlist.compare(sub_node.parentlist)) {
+               
+              node.color="green"; 
+               break;
+             }  
+   
+            
+         
+            }
+         
+        }
+        
+   }
+     
+        
    for(n=0; n<myNodes.length;n++){ 
          var node= myNodes[n]; 
+         console.log( node);
          drawnode(node);
-         console.log(node);
+        
    }
+        
+     
+        
      // redraw(history);
       
         
@@ -324,7 +408,7 @@ setchildren();
          
         updateNode(node,"parentID");  
         
-        console.log(childId);
+        
         $("#"+childId).children().each(function(no,el){
         if($(el).hasClass("droplist")){
         $(el).show();

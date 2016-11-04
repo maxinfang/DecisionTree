@@ -7,7 +7,8 @@ if(mode=="correct") { Color= "#ffa500"}; //orange
 if(mode=="submission") { Color= "#0060bf"};  
 
 function addShapewithColor(type,dragzone,color){
-  
+  if(color =="orange") Color="#ffa500";
+  if(color =="green") Color ="#5cc902";
   
   
   if (type=="T") {addTriangle(dragzone);}

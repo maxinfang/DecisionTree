@@ -24,6 +24,21 @@ if (!Array.prototype.indexOf)
     return -1;
   };
 }
+if (!Array.prototype.compare)
+{
+Array.prototype.compare = function(testArr) {
+    if (this.length != testArr.length) return false;
+    for (var i = 0; i < testArr.length; i++) {
+        if (this[i].compare) { //To test values in nested arrays
+            if (!this[i].compare(testArr[i])) return false;
+        }
+        else if (this[i] !== testArr[i]) return false;
+    }
+    return true;
+}
+  }
+
+ 
   
 function Node(id,type,parent,top,left,selectvalue,emv,prob){      
        this.id = "";
