@@ -27,13 +27,19 @@ if (!Array.prototype.indexOf)
 if (!Array.prototype.compare)
 {
 Array.prototype.compare = function(testArr) {
+	console.log("*****************************************************************");
+	console.log(this);
+	console.log(testArr);
     if (this.length != testArr.length) return false;
     for (var i = 0; i < testArr.length; i++) {
-        if (this[i].compare) { //To test values in nested arrays
-            if (!this[i].compare(testArr[i])) return false;
+        if ((this[i] == "" && testArr[i] == "0") ||
+		    (this[i] == "0" && testArr[i] == "")) {
+			    // accept empty string = 0
+                continue;
         }
         else if (this[i] !== testArr[i]) return false;
     }
+	console.log("found!");
     return true;
 }
   }
