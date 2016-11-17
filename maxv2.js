@@ -75,9 +75,7 @@ function getHistory(){
     }  
          
     }
-  
-    
-  
+   
   
   
  } 
