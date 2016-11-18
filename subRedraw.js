@@ -388,29 +388,29 @@ $(document).ready(function()  {
      
         
     for(n=0; n<myNodes.length;n++){ 
-         var node=  myNodes[n];
-          node.color="red";
-         for(m=0; m<myNodes_submission.length;m++){  
-         var sub_node= myNodes_submission[m];  
-          if ((sub_node.value == node.value ) ||
-          (sub_node.value == "" && node.value == "0") ||
-          (sub_node.value == "0" && node.value == ""))
-           { 
-           console.log(node);
-             console.log(sub_node);
-             if(node.parentlist.compare(sub_node.parentlist)) {
-               
-              node.color="green"; 
-               break;
-             }  
-   
-            
-         
+        var node=  myNodes[n];
+        node.color="red";
+        for(m=0; m<myNodes_submission.length; m++){  
+        var sub_node = myNodes_submission[m];  
+			if ((sub_node.value == node.value ) ||
+				(sub_node.value == "" && node.value == "0") ||
+				(sub_node.value == "0" && node.value == ""))
+			{ 
+				console.log(node);
+				console.log(sub_node);
+				if(node.parentlist.compare(sub_node.parentlist)) {
+					if ((node.type == sub_node.type) &&
+						(node.emv == sub_node.emv) &&
+						(node.prob == sub_node.prob)) {
+							node.color="green";
+					} else {
+						node.color="orange";
+					}
+				break;
+				}  
             }
-         
         }
-        
-   }
+    }
      
         
    for(n=0; n<myNodes.length;n++){ 
