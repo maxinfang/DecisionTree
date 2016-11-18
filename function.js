@@ -48,13 +48,24 @@ Array.prototype.compare = function(testArr) {
 function checkTolerance(submitvalue,correctvalue,tolerance){
   
     var difference = Math.abs(submitvalue-correctvalue);
-    if (difference < tolerance) {
+    if (difference <= tolerance) {
      return true;
     }
     else false;
 }
 
- 
+function circle_EMV(lnode) {
+    var ch = lnode.nextNodes; 
+    var sum = 0;
+    for(var l=0; l<ch.length; l++){
+        //find the largest emv node;
+        var nodeemv=Number(ch[l].node.emv);
+        var  nodeprob=Number(ch[l].node.prob);
+        var nodev=  numMulti(nodeemv,nodeprob);
+        sum = numAdd(sum , nodev);
+    }
+    return sum;
+}
   
 function Node(id,type,parent,top,left,selectvalue,emv,prob){      
        this.id = "";

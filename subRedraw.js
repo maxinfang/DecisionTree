@@ -48,7 +48,7 @@ function getLabel(){
 function getToleranceEMV(){
   
     var element=  parent.document.getElementById(namespacefortoleranceEMV);
-  if (element == null) {   return;}
+  if (element == null) {   return 1;}
      
     return element.innerHTML;
 
@@ -57,7 +57,7 @@ function getToleranceEMV(){
 function getToleranceprob(){
    var element= parent.document.getElementById(namespacefortoleranceprob);
    
-    if (element == null) {   return;}
+    if (element == null) {   return 0.1;}
      
     return element.innerHTML;
   
@@ -323,11 +323,11 @@ $(document).ready(function()  {
         var deep =rootnode.level
         
         for(var n=2; n<=deep ;n++){ 
-              for(var m=0; m<linkedArray2.length;m++){ 
+            for(var m=0; m<linkedArray2.length;m++){ 
                 var  lnode= linkedArray2[m];
                 if(lnode.level==n){
                     
-                  if(lnode.node.type=="S"){
+                    if(lnode.node.type=="S"){
                   
                     var ch =lnode.nextNodes; 
                     var maxemv=0;
@@ -355,25 +355,11 @@ $(document).ready(function()  {
                     
                   }
                   if(lnode.node.type=="C"){
-                     var ch =lnode.nextNodes; 
-                     var sum= 0;
-                    for(var l=0; l<ch.length; l++){
-                    
-                      //find the largest emv node;
-                        var nodeemv=Number(ch[l].node.emv);
-                        var  nodeprob=Number(ch[l].node.prob);
-                             
-                        var nodev=  numMulti(nodeemv,nodeprob);
-       
-                        sum =numAdd(sum , nodev);
-                    
-                    }
-                    lnode.node.emv=sum;
+                    lnode.node.emv=circle_EMV(lnode);
                   
-                  }              }
-                 
-                
-              }
+                  }
+				}
+            }
         }
            
          
@@ -399,11 +385,56 @@ $(document).ready(function()  {
 				console.log(node);
 				console.log(sub_node);
 				if(node.parentlist.compare(sub_node.parentlist)) {
-					if ((node.type == sub_node.type) &&
-						(node.emv == sub_node.emv) &&
-						(node.prob == sub_node.prob)) {
-							node.color="green";
+					if (node.type == sub_node.type) {
+						/*
+						if (node.type == "S") {
+							if ((checkTolerance(sub_node.emv, node.emv, tolerance_emv)  ||
+							     checkTolerance(sub_node.emv, square_EMV(sub_node), tolerance_emv)) &&
+							    (checkTolerance(sub_node.prob, node.prob, tolerance_prob)  ||
+							     checkTolerance(sub_node.prob, square_prob(sub_node), tolerance_prob))) {
+                                node.color="green";
+					        } else {
+								console.log("wrong square emv or prob");
+						        node.color="orange";
+							}
+						} else {
+							if (checkTolerance(sub_node.prob, node.prob, tolerance_prob)) {
+								if (node.type == "C") {
+							       if (checkTolerance(sub_node.emv, node.emv, tolerance_emv)  ||
+							           checkTolerance(sub_node.emv, circle_EMV(sub_node), tolerance_emv)) {
+                                            node.color="green";
+					                } else {
+								        console.log("wrong circle EMV");
+						                node.color="orange";
+							        }
+                                } else { // type = "T"
+									if (checkTolerance(sub_node.emv, node.emv, tolerance_emv) {
+										node.color="green";
+									} else {
+										console.log("wrong triangle EMV")
+										node.color="orange";
+									}
+								}
+							} else {
+								console.log("wrong circle or triangle prob")
+								node.color="orange";
+							}
+						}
+						*/
+						if (checkTolerance(sub_node.emv, node.emv, tolerance_emv)  ||
+						    checkTolerance(sub_node.emv, node.emv, tolerance_emv)) {
+                            if (checkTolerance(sub_node.prob, node.prob, tolerance_prob)) {
+                                node.color="green";
+					        } else {
+								console.log("wrong prob");
+						        node.color="orange";
+							}
+					    } else {
+								console.log("wrong EMV");
+						    node.color="orange";
+					    }
 					} else {
+								console.log("wrong shape");
 						node.color="orange";
 					}
 				break;
