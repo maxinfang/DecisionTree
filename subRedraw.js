@@ -11,9 +11,10 @@
  var namespaceforLabel=  array[0]+"_"+array[1]+"_label"; 
  var namespaceforSubmit= array[0]+"_"+array[1]+"_submission"; 
  var namespaceforAnswer= array[0]+"_"+array[1]+"_answer"; 
- var op= new Array();
+ var namespacefortoleranceEMV = array[0]+"_"+array[1]+"_tolerance_EMV"; 
+ var namespacefortoleranceprob = array[0]+"_"+array[1]+"_tolerance_prob"; 
 
- 
+ var op= new Array();
  
  function getEntry(){
    
@@ -44,6 +45,24 @@ function getLabel(){
     return element.innerHTML;
  } 
 
+function getToleranceEMV(){
+  
+    var element=  parent.document.getElementById(namespacefortoleranceEMV);
+  if (element == null) {   return;}
+     
+    return element.innerHTML;
+
+}
+
+function getToleranceprob(){
+   var element= parent.document.getElementById(namespacefortoleranceprob);
+   
+    if (element == null) {   return;}
+     
+    return element.innerHTML;
+  
+}
+
 function getsubmission(){
     var element= parent.document.getElementById(namespaceforSubmit);
    
@@ -61,6 +80,12 @@ function getCorrectAnswer(){
  var op = getEntry();
  var dataLabel= getLabel();
  var correctAnswer= getCorrectAnswer();
+var tolerance_emv=getToleranceEMV();
+var tolerance_prob=getToleranceprob();
+
+console.log("*******DD");
+console.log(tolerance_emv);
+console.log(tolerance_prob);
  
 if(parent.document.getElementById(namespaceforAnswer))
    {
@@ -365,8 +390,8 @@ $(document).ready(function()  {
     for(n=0; n<myNodes.length;n++){ 
         var node=  myNodes[n];
         node.color="red";
-        for(m=0; m<myNodes_submission.length;m++){  
-        var sub_node= myNodes_submission[m];  
+        for(m=0; m<myNodes_submission.length; m++){  
+        var sub_node = myNodes_submission[m];  
 			if ((sub_node.value == node.value ) ||
 				(sub_node.value == "" && node.value == "0") ||
 				(sub_node.value == "0" && node.value == ""))
@@ -378,9 +403,9 @@ $(document).ready(function()  {
 						(node.emv == sub_node.emv) &&
 						(node.prob == sub_node.prob)) {
 							node.color="green";
-						} else {
-							node.color="orange";
-						}
+					} else {
+						node.color="orange";
+					}
 				break;
 				}  
             }
