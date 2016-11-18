@@ -45,7 +45,14 @@ Array.prototype.compare = function(testArr) {
   }
 
 
-function check
+function checkTolerance(submitvalue,correctvalue,tolerance){
+  
+    var difference = Math.abs(submitvalue-correctvalue);
+    if (difference < tolerance) {
+     return true;
+    }
+    else false;
+}
 
  
   
