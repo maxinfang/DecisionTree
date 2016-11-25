@@ -54,6 +54,38 @@ function checkTolerance(submitvalue,correctvalue,tolerance){
     else false;
 }
 
+
+
+function square_EMV(lnode){ 
+
+    var ch = lnode.nextNodes; 
+    var maximum = 0;
+    _array = new Array();
+    for(var l=0; l<ch.length; l++){
+        //find the largest emv node;
+        _array.push(ch[l].node.emv);
+        sum = numAdd(sum , nodev);
+    }
+     maximum=Math.max.apply(Math,_array);
+
+    return maximum; 
+
+}
+
+function sqaure_child_prob(lnode) { 
+    var parentnode = lnode.prevNode; 
+    var   ch= parentnode.nextNodes; 
+    if (lnode.EMV==square_EMV(parentnode)) {
+      return 1;
+    }
+    else{
+      return 0; 
+    } 
+}
+ 
+
+ 
+
 function circle_EMV(lnode) {
     var ch = lnode.nextNodes; 
     var sum = 0;

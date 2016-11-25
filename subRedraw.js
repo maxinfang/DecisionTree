@@ -324,7 +324,9 @@ $(document).ready(function()  {
         
         for(var n=2; n<=deep ;n++){ 
             for(var m=0; m<linkedArray2.length;m++){ 
+               
                 var  lnode= linkedArray2[m];
+              console.log(lnode);
                 if(lnode.level==n){
                     
                     if(lnode.node.type=="S"){
@@ -358,7 +360,7 @@ $(document).ready(function()  {
                     lnode.node.emv=circle_EMV(lnode);
                   
                   }
-				}
+        }
             }
         }
            
@@ -378,67 +380,33 @@ $(document).ready(function()  {
         node.color="red";
         for(m=0; m<myNodes_submission.length; m++){  
         var sub_node = myNodes_submission[m];  
-			if ((sub_node.value == node.value ) ||
-				(sub_node.value == "" && node.value == "0") ||
-				(sub_node.value == "0" && node.value == ""))
-			{ 
-				console.log(node);
-				console.log(sub_node);
-				if(node.parentlist.compare(sub_node.parentlist)) {
-					if (node.type == sub_node.type) {
-						/*
-						if (node.type == "S") {
-							if ((checkTolerance(sub_node.emv, node.emv, tolerance_emv)  ||
-							     checkTolerance(sub_node.emv, square_EMV(sub_node), tolerance_emv)) &&
-							    (checkTolerance(sub_node.prob, node.prob, tolerance_prob)  ||
-							     checkTolerance(sub_node.prob, square_prob(sub_node), tolerance_prob))) {
-                                node.color="green";
-					        } else {
-								console.log("wrong square emv or prob");
-						        node.color="orange";
-							}
-						} else {
-							if (checkTolerance(sub_node.prob, node.prob, tolerance_prob)) {
-								if (node.type == "C") {
-							       if (checkTolerance(sub_node.emv, node.emv, tolerance_emv)  ||
-							           checkTolerance(sub_node.emv, circle_EMV(sub_node), tolerance_emv)) {
-                                            node.color="green";
-					                } else {
-								        console.log("wrong circle EMV");
-						                node.color="orange";
-							        }
-                                } else { // type = "T"
-									if (checkTolerance(sub_node.emv, node.emv, tolerance_emv) {
-										node.color="green";
-									} else {
-										console.log("wrong triangle EMV")
-										node.color="orange";
-									}
-								}
-							} else {
-								console.log("wrong circle or triangle prob")
-								node.color="orange";
-							}
-						}
-						*/
-						if (checkTolerance(sub_node.emv, node.emv, tolerance_emv)  ||
-						    checkTolerance(sub_node.emv, node.emv, tolerance_emv)) {
-                            if (checkTolerance(sub_node.prob, node.prob, tolerance_prob)) {
-                                node.color="green";
-					        } else {
-								console.log("wrong prob");
-						        node.color="orange";
-							}
-					    } else {
-								console.log("wrong EMV");
-						    node.color="orange";
-					    }
-					} else {
-								console.log("wrong shape");
-						node.color="orange";
-					}
-				break;
-				}  
+      if ((sub_node.value == node.value ) ||
+        (sub_node.value == "" && node.value == "0") ||
+        (sub_node.value == "0" && node.value == ""))
+      { 
+        console.log(node);
+        console.log(sub_node);
+        if(node.parentlist.compare(sub_node.parentlist)) {
+          if (node.type == sub_node.type) {
+                    node.color="green";
+            
+            if (node.type == "S") {
+              if (!(checkTolerance(sub_node.emv, node.emv, tolerance_emv)  ||
+                   checkTolerance(sub_node.emv, square_EMV(sub_node), tolerance_emv))){
+                      node.color="orange";            
+              
+              }
+            }
+              
+               
+           
+             
+          } else {
+                console.log("wrong shape");
+            node.color="orange";
+          }
+        break;
+        }  
             }
         }
     }
