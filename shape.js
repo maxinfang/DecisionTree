@@ -10,6 +10,7 @@ function addShapewithColor(type,dragzone,color){
   if(color =="red") Color="#d9534f";
   if(color =="orange") Color="#ffa500";
   if(color =="green") Color ="#5cc902";
+  if(color =="grey") Color ="#808080"; //testing color
   
   
   if (type=="T") {addTriangle(dragzone);}

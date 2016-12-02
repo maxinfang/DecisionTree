@@ -375,42 +375,49 @@ $(document).ready(function()  {
         
      
         
-    for(n=0; n<myNodes.length;n++){ 
-        var node=  myNodes[n];
-        node.color="red";
-        for(m=0; m<myNodes_submission.length; m++){  
-        var sub_node = myNodes_submission[m];  
-      if ((sub_node.value == node.value ) ||
-        (sub_node.value == "" && node.value == "0") ||
-        (sub_node.value == "0" && node.value == ""))
-      { 
-        console.log(node);
-        console.log(sub_node);
-        if(node.parentlist.compare(sub_node.parentlist)) {
-          if (node.type == sub_node.type) {
-                    node.color="green";
-            
-            if (node.type == "S") {
-              if (!(checkTolerance(sub_node.emv, node.emv, tolerance_emv)  ||
-                   checkTolerance(sub_node.emv, square_EMV(sub_node), tolerance_emv))){
-                      node.color="orange";            
-              
-              }
-            }
-              
-               
-           
-             
-          } else {
-                console.log("wrong shape");
-            node.color="orange";
-          }
-        break;
-        }  
-            }
-        }
+    for(n=0; n<myNodes.length;n++){  
+      
+           var node=  myNodes[n]; 
+           node.color="red";   
+           for(m=0; m<myNodes_submission.length;m++){  
+               var sub_node= myNodes_submission[m];   
+             if ((sub_node.value == node.value ) ||
+           (sub_node.value == "" && node.value == "0") ||
+          (sub_node.value == "0" && node.value == ""))
+            {   
+              if(node.parentlist.compare(sub_node.parentlist)) {                                 
+                if(node.type !=sub_node.type){node.color="red";}
+                      else if ((node.emv == sub_node.emv) && (node.prob == sub_node.prob)) {
+                         node.color="green";
+                  } else {
+                         node.color="orange";
+                   }
+               break;
+
+             }  
+
+           }
     }
+ }          
+        
+        
+        
+              
+   for(n=0; n<myNodes.length;n++){ 
+         var node= myNodes[n]; 
+         console.log( node.color);
+         if(node.color =='red') continue; 
+         if(node.color =='green') continue; 
+           
+          node.color ='grey';
+        
+              
+   }
+   
      
+        
+        
+        
         
    for(n=0; n<myNodes.length;n++){ 
          var node= myNodes[n]; 
