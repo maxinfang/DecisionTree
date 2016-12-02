@@ -385,14 +385,65 @@ $(document).ready(function()  {
            (sub_node.value == "" && node.value == "0") ||
           (sub_node.value == "0" && node.value == ""))
             {   
-              if(node.parentlist.compare(sub_node.parentlist)) {                                 
-                if(node.type !=sub_node.type){node.color="red";}
-                      else if ((node.emv == sub_node.emv) && (node.prob == sub_node.prob)) {
-                         node.color="green";
-                  } else {
-                         node.color="orange";
-                   }
-               break;
+              if(node.parentlist.compare(sub_node.parentlist)) { 
+                    node.color="green"; 
+                    if(node.type != sub_node.type)  {node.color="orange";}
+                
+                
+                   // if(node.emv != sub_node.emv)  {node.color="orange";
+                    
+                                                                               
+                                                  //type is cycle
+                                         //type is cycle
+                     if(sub_node.type='T'){
+                       
+                            if(sub_node.emv != node.emv)  { 
+                              node.color="orange";// making emv box read
+                            }   
+                           
+                     }   
+                
+                     if(sub_node.type=='S'){ 
+                       
+                            if(sub_node.emv != square_EMV(sub_node) && sub_node.emv !=node.emv  )  {
+                                     node.color="orange";// making emv box read
+                           }
+                              
+                     }
+                
+                       if(sub_node.type='C'){ 
+                         
+                           if(sub_node.emv != circle_EMV(sub_node) && sub_node.emv !=node.emv  )  {
+                                     node.color="orange";// making emv box read
+                           }
+                                                     
+                      
+                     }
+                
+                
+                     if(sub_node.type=='S'){ 
+                       
+                            if(sub_node.prob != square_prob(sub_node) && sub_node.prob !=node.prob)  {
+                                     node.color="orange";// making  prob  box read
+                           }
+                              
+                     }
+                     else{
+                           
+                               if(sub_node.prob !=node.prob)  {
+                                     node.color="orange";
+                                   // making  prob  box read
+                           }
+                              
+                     
+                     
+                     }
+                    
+                      //if(node.childrent != sub_node.chilist) add another list comparing the children value; something that can do later                
+                                               
+                    
+                    
+                   
 
              }  
 
