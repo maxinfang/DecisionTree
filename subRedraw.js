@@ -410,8 +410,8 @@ $(document).ready(function()  {
                      }   
                 
                      if(sub_node.node.type=='S'){ 
-                       
-                            if(sub_node.node.emv != square_EMV(sub_node) && sub_node.emv !=node.emv  )  {
+                         
+                           if(!checkTolerance(sub_node.node.emv,square_EMV(sub_node),tolerance_emv) && !checkTolerance(sub_node.node.emv,node.emv ,tolerance_emv)   )  {
                                      node.color="orange";// making emv box red
                                      node.redEMV=true;
                            }
@@ -419,19 +419,20 @@ $(document).ready(function()  {
                      }
                 
                        if(sub_node.node.type='C'){ 
-                           
-                           if(sub_node.node.emv != circle_EMV(sub_node) && sub_node.node.emv !=node.emv  )  {
+                        
+                           if( !checkTolerance(sub_node.node.emv, circle_EMV(sub_node),tolerance_emv) && !checkTolerance(sub_node.node.emv,node.emv ,tolerance_emv)    )  {
                                      node.color="orange";// making emv box red
                                       node.redEMV=true;
                            }
                                                      
                       
                      }
-                
+               
                 
                      if(sub_node.node.type=='S'){ 
                        
-                            if(sub_node.node.prob != square_prob(sub_node) && sub_node.node.prob !=node.prob)  {
+    
+      if(!checkTolerance(sub_node.node.prob,square_prob(sub_node), tolerance_prob) && !checkTolerance(sub_node.node.prob,node.prob ,tolerance_prob)  )  {
                                      node.color="orange";// making  prob  box red
                                      node.redprob=true;
                            }
@@ -439,9 +440,9 @@ $(document).ready(function()  {
                      }
                      else{
                            
-                               if(sub_node.node.prob !=node.prob)  {
+                               if(!checkTolerance(sub_node.node.prob,node.prob ,tolerance_prob))  {
                                      node.color="orange";
-                                      node.redprob=true;
+                                     node.redprob=true;
                                    
                                    // making  prob  box red
                            }
