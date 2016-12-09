@@ -46,4 +46,19 @@ if(typeof(value) != "undefined")
 return text;
 };
 
+function addtextwithred(lable,value){ 
+var text= document.createElement('input');
+text.style.borderColor = "red";
+$(text).uniqueId(); 
+$(text).addClass(lable);  
+text.type="text";
+text.name=lable; 
+if(typeof(value) != "undefined")
+{ 
+  text.value=value;
+}
+ 
+return text;
+};
+
  

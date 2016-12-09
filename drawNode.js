@@ -83,9 +83,15 @@ function drawnode(node){
   
   
   if(node.emv==""){
+     
+     
+     
      emv=addtext("EMV");}
      else{  
-     emv= addtext("EMV",node.emv)}
+    
+     if(node.redEMV){ emv= addtextwithred("EMV",node.emv); }
+     else{ emv= addtext("EMV",node.emv);}
+       }
   
      $(datadiv).append(emv); 
       var prob;
@@ -94,15 +100,22 @@ function drawnode(node){
   
    if (node.parentID!=""){        
        
-          prob=addtext("Prob",node.prob);
+     
+     
+     if(node.redprob){ prob=addtextwithred("Prob",node.prob);
+     }
+     else{ prob=addtext("Prob",node.prob);
+     
+     }
       problabel=addlabel("Prob");
         
-       $(prob).show();
+        $(prob).show();
         $(problabel).show();
         $(probs).show();
 
      }
      else{
+       
         prob=addtext("Prob");
         problabel=addlabel("Prob");
         $(prob).hide();

@@ -347,7 +347,7 @@ $(document).ready(function()  {
                       //find the largest emv node;
                        if(ch[l].node.emv==maxemv)
                            { ch[l].node.prob=1;}
-                       else{ch[l].node.prob="0";}
+                       else{ ch[l].node.prob="0";}
                       }
                        
                     
@@ -378,16 +378,21 @@ $(document).ready(function()  {
     for(n=0; n<myNodes.length;n++){  
       
            var node=  myNodes[n]; 
-           node.color="red";   
-           for(m=0; m<myNodes_submission.length;m++){  
-               var sub_node= myNodes_submission[m];   
-             if ((sub_node.value == node.value ) ||
-           (sub_node.value == "" && node.value == "0") ||
-          (sub_node.value == "0" && node.value == ""))
+           
+           node.color="red";  
+           node.redEMV=false; 
+            node.redprob=false;
+           for(m=0; m< linkdeArray_sub.length;m++){  
+               var sub_node= linkdeArray_sub[m];  
+             
+             if ((sub_node.node.value == node.value ) ||
+           (sub_node.node.value == "" && node.value == "0") ||
+          (sub_node.node.value == "0" && node.value == ""))
             {   
-              if(node.parentlist.compare(sub_node.parentlist)) { 
+              if(node.parentlist.compare(sub_node.node.parentlist)) { 
                     node.color="green"; 
-                    if(node.type != sub_node.type)  {node.color="orange";}
+                     
+                    if(node.type != sub_node.node.type)  {node.color="orange";}
                 
                 
                    // if(node.emv != sub_node.emv)  {node.color="orange";
@@ -395,10 +400,11 @@ $(document).ready(function()  {
                                                                                
                                                   //type is cycle
                                          //type is cycle
-                     if(sub_node.type='T'){
+                     if(sub_node.node.type='T'){
                        
                             if(sub_node.emv != node.emv)  { 
-                              node.color="orange";// making emv box read
+                              node.color="orange";// making emv box red
+                               node.redEMV=true;
                             }   
                            
                      }   
@@ -406,15 +412,17 @@ $(document).ready(function()  {
                      if(sub_node.type=='S'){ 
                        
                             if(sub_node.emv != square_EMV(sub_node) && sub_node.emv !=node.emv  )  {
-                                     node.color="orange";// making emv box read
+                                     node.color="orange";// making emv box red
+                                     node.redEMV=true;
                            }
                               
                      }
                 
                        if(sub_node.type='C'){ 
-                         
+                           
                            if(sub_node.emv != circle_EMV(sub_node) && sub_node.emv !=node.emv  )  {
-                                     node.color="orange";// making emv box read
+                                     node.color="orange";// making emv box red
+                                      node.redEMV=true;
                            }
                                                      
                       
@@ -424,7 +432,8 @@ $(document).ready(function()  {
                      if(sub_node.type=='S'){ 
                        
                             if(sub_node.prob != square_prob(sub_node) && sub_node.prob !=node.prob)  {
-                                     node.color="orange";// making  prob  box read
+                                     node.color="orange";// making  prob  box red
+                                     node.redprob=true;
                            }
                               
                      }
@@ -432,7 +441,9 @@ $(document).ready(function()  {
                            
                                if(sub_node.prob !=node.prob)  {
                                      node.color="orange";
-                                   // making  prob  box read
+                                      node.redprob=true;
+                                   
+                                   // making  prob  box red
                            }
                               
                      
@@ -454,7 +465,7 @@ $(document).ready(function()  {
         
         
               
-   for(n=0; n<myNodes.length;n++){ 
+  /* for(n=0; n<myNodes.length;n++){ 
          var node= myNodes[n]; 
          console.log( node.color);
          if(node.color =='red') continue; 
@@ -463,7 +474,7 @@ $(document).ready(function()  {
           node.color ='grey';
         
               
-   }
+   */
    
      
         
