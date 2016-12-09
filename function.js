@@ -46,8 +46,11 @@ Array.prototype.compare = function(testArr) {
 
 
 function checkTolerance(submitvalue,correctvalue,tolerance){
-  
+ 
     var difference = Math.abs(submitvalue-correctvalue);
+   console.log("~~~~~~~~~~~~~~~~~~~~");
+  console.log(difference);
+   console.log("~~~~~~~~~~~~~~~~~~~~");
     if (difference <= tolerance) {
      return true;
     }

@@ -402,7 +402,7 @@ $(document).ready(function()  {
                                          //type is cycle
                      if(sub_node.node.type='T'){
                        
-                            if(sub_node.node.emv != node.emv)  { 
+                            if  (!checkTolerance(sub_node.node.emv,node.emv,tolerance_emv)) { 
                               node.color="orange";// making emv box red
                                node.redEMV=true;
                             }   
