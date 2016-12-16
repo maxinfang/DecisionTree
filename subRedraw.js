@@ -434,11 +434,11 @@ $(document).ready(function()  {
                       
                      }
                
-                
+             if(sub_node.node.parentID !=""){
                      if(sub_node.node.type=='S'){ 
                        
-    
-      if(!checkTolerance(sub_node.node.prob,square_child_prob(sub_node), tolerance_prob) && !checkTolerance(sub_node.node.prob,node.prob ,tolerance_prob)  )  {
+     
+                       if(!checkTolerance(sub_node.node.prob,square_child_prob(sub_node), tolerance_prob) && !checkTolerance(sub_node.node.prob,node.prob ,tolerance_prob)  )  {
                                      node.color="orange";// making  prob  box red
                                      node.redprob=true;
                            }
@@ -456,13 +456,13 @@ $(document).ready(function()  {
                      
                      
                      }
-                    
+               
                 console.log(sub_node.nextNodes);
                 console.log(node.nextNodes);
               //if(node.childrent != sub_node.chilist) add another list comparing the children value; something that can do later                
                                                
                     
-                    
+            }           
                    
 
              }  
