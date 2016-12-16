@@ -83,10 +83,6 @@ function getCorrectAnswer(){
 var tolerance_emv=getToleranceEMV();
 var tolerance_prob=getToleranceprob();
 
-console.log("*******DD");
-console.log(tolerance_emv);
-console.log(tolerance_prob);
- 
 if(parent.document.getElementById(namespaceforAnswer))
    {
      
@@ -298,7 +294,17 @@ $(document).ready(function()  {
         
         
  setchildren();
- setchildren_sub();       
+ setchildren_sub();   
+    
+     for(var n=0; n<linkedArray.length;n++){
+        var   node= linkedArray[n];
+       
+              console.log("*******DD");
+              console.log(node);
+ 
+ 
+      } 
+        
        
         var rootnode = findrootnode();
         var rootnode_sub=findrootnode_sub();
@@ -451,7 +457,9 @@ $(document).ready(function()  {
                      
                      }
                     
-                      //if(node.childrent != sub_node.chilist) add another list comparing the children value; something that can do later                
+                console.log(sub_node.nextNodes);
+                console.log(node.nextNodes);
+              //if(node.childrent != sub_node.chilist) add another list comparing the children value; something that can do later                
                                                
                     
                     
