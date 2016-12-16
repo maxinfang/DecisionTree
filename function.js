@@ -67,7 +67,7 @@ function square_EMV(lnode){
     for(var l=0; l<ch.length; l++){
         //find the largest emv node;
         _array.push(ch[l].node.emv);
-        sum = numAdd(sum , nodev);
+       // sum = numAdd(sum , nodev);
     }
      maximum=Math.max.apply(Math,_array);
 
@@ -75,7 +75,7 @@ function square_EMV(lnode){
 
 }
 
-function sqaure_child_prob(lnode) { 
+function square_child_prob(lnode) { 
     var parentnode = lnode.prevNode; 
     var   ch= parentnode.nextNodes; 
     if (lnode.EMV==square_EMV(parentnode)) {
