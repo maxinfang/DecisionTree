@@ -406,7 +406,7 @@ $(document).ready(function()  {
                                                                                
                                                   //type is cycle
                                          //type is cycle
-                     if(sub_node.node.type='T'){
+                     if(sub_node.node.type=='T'){
                        
                             if  (!checkTolerance(sub_node.node.emv,node.emv,tolerance_emv)) { 
                               node.color="orange";// making emv box red
@@ -424,7 +424,7 @@ $(document).ready(function()  {
                               
                      }
                 
-                       if(sub_node.node.type='C'){ 
+                       if(sub_node.node.type=='C'){ 
                         
                            if( !checkTolerance(sub_node.node.emv, circle_EMV(sub_node),tolerance_emv) && !checkTolerance(sub_node.node.emv,node.emv ,tolerance_emv)    )  {
                                      node.color="orange";// making emv box red
