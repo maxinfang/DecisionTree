@@ -57,7 +57,7 @@ function getToleranceEMV(){
 function getToleranceprob(){
    var element= parent.document.getElementById(namespacefortoleranceprob);
    
-    if (element == null) {   return 0.1;}
+    if (element == null) {   return 0.01;}
      
     return element.innerHTML;
   
