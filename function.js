@@ -329,8 +329,7 @@ function giveloopWarning(text){
         $("p").text(loop);
   }
    else{
-        $("body").css("background-color","transparent");
-        $("p").text("");
+       giveWarning();
             
        }; 
 
