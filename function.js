@@ -274,11 +274,11 @@ function  emptymyNodes(){
 function giveloopWarning(text){
   
         
-    var loop="there is a loop from ";
+    var loop="Warning: loop detected!";
     for(var n=0; n<text.length;n++){ 
                   
         node= text[n];
-        loop= loop+" "+node.id; 
+        //loop= loop+" "+node.id; 
               
         var targetid ;
         $("#"+node.id).children().each(function(no,el){ 
@@ -326,8 +326,13 @@ function giveloopWarning(text){
            
     if(text.length>0){
         $("body").css("background-color","#fee");
-        $("p").text( loop);
+        $("p").text(loop);
   }
+   else{
+        $("body").css("background-color","transparent");
+        $("p").text("");
+            
+       }; 
 
 }
 
