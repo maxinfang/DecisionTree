@@ -274,39 +274,67 @@ function  emptymyNodes(){
 function giveloopWarning(text){
   
         
-            var loop="there is a loop from "
-            for(var n=0; n<text.length;n++){
-               
-                   node= text[n];
-                  loop= loop+" "+node.id;
-                
+            var loop="there is a loop from ";
+            for(var n=0; n<text.length;n++){ 
+                  
+                node= text[n];
+                loop= loop+" "+node.id; 
+              
+                var targetid ;
+                 $("#"+node.id).children().each(function(no,el){ 
+                   if($(el).hasClass("_jsPlumb_endpoint_anchor_")){
+                   targetid= el.id ; 
+                   } 
+                }              );
+  
+                var sourceid ; 
+                $("#"+node.id).children().each(function(no,el){
+                  
+                   if($(el).hasClass("_jsPlumb_endpoint_anchor_")){
+                   sourceid= el.id ; 
+                } 
+               }); 
+              
+               console.log(targetid);
+               console.log(sourceid);
+              
               }
   
+        
              
            var connectionList = jsPlumb.getConnections();
   
            for(var x=0; x<connectionList.length; x++){
            
              conn =connectionList[x];
-             console.log("*****");
-             console.log(conn.sourceId); 
-             console.log("*****");
-   
-  
-       
-             conn.setPaintStyle({ 
-             dashstyle: "solid",
-             lineWidth: 2 ,
-             strokeStyle:"#fa0000",
+             
+         
+             
+               for(var n=0; n<text.length;n++){ 
+                 
+                  var parentId=$('#'+conn.sourceId).parent().attr('id');
+                  var node= text[n];
+                 if (node.id == parentId){
+                  conn.setPaintStyle({ 
+                  dashstyle: "solid",
+                  lineWidth: 2 ,
+                  strokeStyle:"#fa0000",
           
-        })
+              })
+                 
+                 } 
+              
+                 
+                 }
+              
+             
+            
             }
             
-  
-  
    
-           $("body").css("background-color","#fee");
-           $("p").text( loop);
+   
+           //$("body").css("background-color","#fee");
+          //  $("p").text( loop);
   
 
 
@@ -372,28 +400,20 @@ function recursivecheck(currentnode,box){
 
 
 function checkloop(){
-  
-       
+   
   
     for(n=0; n<myNodes.length;++n){
        
         var node= myNodes[n];
         var li=[]; 
         li.push(node);  
-       if(node.parentID!="") {
-          console.log("-----cheking loop",n); 
+        if(node.parentID!="") { 
           var parentid =node.parentID;
           var parentnode= findnode(parentid);  
-        var temp=  recursivecheck(parentnode, li )
-       if (temp!=true){
-         //draw box;
-          
-          giveloopWarning(temp);
-         
-       
-       }
-        
-        console.log("----end -cheking loop");
+          var temp=  recursivecheck(parentnode, li )
+       if (temp!=true){ 
+          giveloopWarning(temp); 
+       } 
        }
     
        }  
@@ -411,8 +431,7 @@ function sentToparentPage()
   var answervalue = serialise(myNodes); 
   
   if(mode !="submission" && mode !="correct"){
- // window.parent.save(answervalue);
- // $('#answer').val(answervalue); 
+ 
       var elem= parent.document.getElementsByTagName("input"); 
  
     
