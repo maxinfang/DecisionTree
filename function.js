@@ -274,70 +274,60 @@ function  emptymyNodes(){
 function giveloopWarning(text){
   
         
-            var loop="there is a loop from ";
-            for(var n=0; n<text.length;n++){ 
+    var loop="there is a loop from ";
+    for(var n=0; n<text.length;n++){ 
                   
-                node= text[n];
-                loop= loop+" "+node.id; 
+        node= text[n];
+        loop= loop+" "+node.id; 
               
-                var targetid ;
-                 $("#"+node.id).children().each(function(no,el){ 
-                   if($(el).hasClass("_jsPlumb_endpoint_anchor_")){
-                   targetid= el.id ; 
-                   } 
-                }              );
+        var targetid ;
+        $("#"+node.id).children().each(function(no,el){ 
+            if($(el).hasClass("_jsPlumb_endpoint_anchor_")){
+                targetid= el.id ; 
+            } 
+        });
   
-                var sourceid ; 
-                $("#"+node.id).children().each(function(no,el){
+        var sourceid ; 
+        $("#"+node.id).children().each(function(no,el){
                   
-                   if($(el).hasClass("_jsPlumb_endpoint_anchor_")){
-                   sourceid= el.id ; 
-                } 
-               }); 
+            if($(el).hasClass("_jsPlumb_endpoint_anchor_")){
+                sourceid= el.id ; 
+            } 
+        }); 
               
-               console.log(targetid);
-               console.log(sourceid);
+        console.log(targetid);
+        console.log(sourceid);
               
-              }
-  
-        
+    }
              
-           var connectionList = jsPlumb.getConnections();
+    var connectionList = jsPlumb.getConnections();
   
-           for(var x=0; x<connectionList.length; x++){
+    for(var x=0; x<connectionList.length; x++){
            
-             conn =connectionList[x];
-             
-         
-             
-               for(var n=0; n<text.length;n++){ 
-                 
-                  var parentId=$('#'+conn.sourceId).parent().attr('id');
-                  var node= text[n];
-                 if (node.id == parentId){
-                  conn.setPaintStyle({ 
-                  dashstyle: "solid",
-                  lineWidth: 2 ,
-                  strokeStyle:"#fa0000",
-          
-              })
-                 
-                 } 
-              
-                 
-                 }
-              
-             
-            
-            }
-            
-   
-   
-           //$("body").css("background-color","#fee");
-          //  $("p").text( loop);
-  
-
-
+        conn =connectionList[x];
+        
+		var parentId=$('#'+conn.targetId).parent().attr('id');
+		console.log();
+        if (include(text,parentId)){
+            conn.setPaintStyle({ 
+                dashstyle: "solid",
+                lineWidth: 2 ,
+                strokeStyle:"#fa0000",
+            })
+        } 
+		/*else{
+			conn.setPaintStyle({ 
+                dashstyle: "solid",
+                lineWidth: 2 ,
+                strokeStyle:"#666",
+            })
+		}*/
+    }
+           
+    if(text.length>0){
+        $("body").css("background-color","#fee");
+        $("p").text( loop);
+	}
 
 }
 
@@ -377,17 +367,26 @@ function include(arr, obj) {
 function recursivecheck(currentnode,box){
     
        
-     box.push(currentnode) ;
+    box.push(currentnode) ;
   
-     var parentid =currentnode.parentID;
+    var parentid =currentnode.parentID;
            
-     if(parentid=="") {return true;};
+    if(parentid=="") {return true;};
   
-     var parentnode= findnode(parentid);
+    var parentnode= findnode(parentid);
   
-     if(include(box,parentnode)){return box;} 
+    if(include(box,parentnode)){
+		ret = new Array();
+		while (box.length > 0) {
+			temp = box.pop();
+			ret.push(temp);
+			if (include(ret,parentnode)) {
+				return ret;
+			}
+		}
+	} 
   
-     else{ return  recursivecheck (parentnode,box);  
+    else{ return  recursivecheck (parentnode,box);  
           
            
          }
@@ -401,27 +400,28 @@ function recursivecheck(currentnode,box){
 
 function checkloop(){
    
-  
+    var allerrors = new Array();
     for(n=0; n<myNodes.length;++n){
        
         var node= myNodes[n];
         var li=[]; 
         li.push(node);  
         if(node.parentID!="") { 
-          var parentid =node.parentID;
-          var parentnode= findnode(parentid);  
-          var temp=  recursivecheck(parentnode, li )
-       if (temp!=true){ 
-          giveloopWarning(temp); 
-       } 
-       }
+            var parentid =node.parentID;
+            var parentnode= findnode(parentid);  
+            var temp=  recursivecheck(parentnode, li )
+            if (temp!=true){ 
+                for (var l=0; l<temp.length;l++ ) {
+					if (! include(allerrors,temp[l])) {
+						allerrors.push(temp[l]);
+					}
+				}
+              
+            } 
+        }
     
-       }  
-
-
-
-
-
+    }  
+    giveloopWarning(allerrors);
 }
 
 function sentToparentPage()
