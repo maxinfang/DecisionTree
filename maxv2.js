@@ -145,6 +145,12 @@ $(document).ready(function()  {
       
       }
   
+   jsPlumb.bind("jsPlumbConnection", function(ci) { // ci is connection info.
+    var s=ci.sourceId,t=ci.targetId;
+    console.log(s+" -> "+t);
+});
+  
+ 
   
   jsPlumb.bind("connection", function(info, originalEvent) {
         var conn = info.connection;
@@ -155,6 +161,17 @@ $(document).ready(function()  {
         node.value="0";
         updateNode(node,"parentID"); 
         updateNode(node,"value");
+    
+        console.log(conn);
+    
+         
+        conn.setPaintStyle({ 
+          dashstyle: "solid",
+          lineWidth: 2 ,
+          strokeStyle:"#fa0000",
+          
+        })
+    
       
         $("#"+childId).children().each(function(no,el){
            if($(el).hasClass("droplist")){
@@ -181,7 +198,7 @@ $(document).ready(function()  {
    //initialzie button action to different buttons;
    jsPlumb.bind("connectionDetached", function(info, originalEvent) {
   var conn = info.connection; 
-     console.log(conn);
+     
    var parentId=$('#'+conn.sourceId).parent().attr('id');
         var childId=$('#'+conn.targetId).parent().attr('id');
         var  paId=$('#'+conn.sourceId).parent().attr('id');
