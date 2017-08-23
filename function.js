@@ -190,9 +190,9 @@ function generateID(myNodes){
       };
 
   function findnode(id){ 
-       for(n=0; n<myNodes.length;n++){
-         if (myNodes[n].id == id){ 
-         return myNodes[n];
+       for(m=0; m<myNodes.length;++m){
+         if (myNodes[m].id == id){ 
+         return myNodes[m];
          }
        }
        }
@@ -271,12 +271,34 @@ function  emptymyNodes(){
       };
 
 
+function giveloopWarning(text){
+  
+        
+            var loop="there is a loop from "
+            for(var n=0; n<text.length;n++){
+               
+                   node= text[n];
+                  loop= loop+" "+node.id;
+                
+              }
+          
+           $("body").css("background-color","#fee");
+           $("p").text( loop);
+  
+
+
+
+}
+
 function  giveWarning(){
       var numberOfnoParent=0;
+  
   for(n=0; n<myNodes.length;n++){
         var node= myNodes[n];
         var parentid = node.parentID;
         if(parentid=="") numberOfnoParent++;
+    
+    
        }  
          if (numberOfnoParent>1) {
            
@@ -291,9 +313,78 @@ function  giveWarning(){
        }; 
 }
 
+
+function include(arr, obj) {
+    for(var i=0; i<arr.length; i++) {
+        if (arr[i] == obj) return true;
+    }
+  
+  //include([1,2,3,4], 3); 
+}
+
+
+function recursivecheck(currentnode,box){
+    
+       
+     box.push(currentnode) ;
+  
+     var parentid =currentnode.parentID;
+           
+     if(parentid=="") {return true;};
+  
+     var parentnode= findnode(parentid);
+  
+     if(include(box,parentnode)){return box;} 
+  
+     else{ return  recursivecheck (parentnode,box);  
+          
+           
+         }
+  
+   
+}
+
+
+
+
+
+function checkloop(){
+  
+       
+  
+    for(n=0; n<myNodes.length;++n){
+       
+        var node= myNodes[n];
+        var li=[]; 
+        li.push(node);  
+       if(node.parentID!="") {
+          console.log("-----cheking loop",n); 
+          var parentid =node.parentID;
+          var parentnode= findnode(parentid);  
+        var temp=  recursivecheck(parentnode, li )
+       if (temp!=true){
+         //draw box;
+          
+          giveloopWarning(temp);
+         
+       
+       }
+        
+        console.log("----end -cheking loop");
+       }
+    
+       }  
+
+
+
+
+
+}
+
 function sentToparentPage()
 { console.log(myNodes);
-  giveWarning();
+  checkloop();
+  //giveWarning();
   var answervalue = serialise(myNodes); 
   
   if(mode !="submission" && mode !="correct"){
@@ -362,6 +453,7 @@ function deleteNode(node)
       $("#"+deletedNodeid).remove();
       
 }
+ 
 
 
 

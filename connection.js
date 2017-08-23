@@ -36,8 +36,13 @@ function addConnection(node){
        s=jsPlumb.selectEndpoints({source: sourceid}).get(0);
        t=jsPlumb.selectEndpoints({target: targetid}).get(0);
        
-       jsPlumb.connect({source:s, target:t}); 
+       var linkconn = jsPlumb.connect({source:s, target:t}); 
         
-
+  
+       // conn.setPaintStyle({lineWidth: 2, 
+                                     //  strokeStyle:"#666",
+                                      //  dashstyle:"4 2"})
+      
+     
 }
 
