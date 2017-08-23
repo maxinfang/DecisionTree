@@ -306,28 +306,28 @@ function giveloopWarning(text){
            
         conn =connectionList[x];
         
-		var parentId=$('#'+conn.targetId).parent().attr('id');
-		console.log();
-        if (include(text,parentId)){
+         var targetId=$('#'+conn.targetId).parent().attr('id');
+         var targetnode= findnode(targetId); 
+        if (include(text,targetnode)){
             conn.setPaintStyle({ 
                 dashstyle: "solid",
                 lineWidth: 2 ,
                 strokeStyle:"#fa0000",
             })
         } 
-		/*else{
-			conn.setPaintStyle({ 
+    else{
+      conn.setPaintStyle({ 
                 dashstyle: "solid",
                 lineWidth: 2 ,
                 strokeStyle:"#666",
             })
-		}*/
+    }
     }
            
     if(text.length>0){
         $("body").css("background-color","#fee");
         $("p").text( loop);
-	}
+  }
 
 }
 
@@ -376,15 +376,15 @@ function recursivecheck(currentnode,box){
     var parentnode= findnode(parentid);
   
     if(include(box,parentnode)){
-		ret = new Array();
-		while (box.length > 0) {
-			temp = box.pop();
-			ret.push(temp);
-			if (include(ret,parentnode)) {
-				return ret;
-			}
-		}
-	} 
+    ret = new Array();
+    while (box.length > 0) {
+      temp = box.pop();
+      ret.push(temp);
+      if (include(ret,parentnode)) {
+        return ret;
+      }
+    }
+  } 
   
     else{ return  recursivecheck (parentnode,box);  
           
@@ -412,10 +412,10 @@ function checkloop(){
             var temp=  recursivecheck(parentnode, li )
             if (temp!=true){ 
                 for (var l=0; l<temp.length;l++ ) {
-					if (! include(allerrors,temp[l])) {
-						allerrors.push(temp[l]);
-					}
-				}
+          if (! include(allerrors,temp[l])) {
+            allerrors.push(temp[l]);
+          }
+        }
               
             } 
         }
