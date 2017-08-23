@@ -281,7 +281,30 @@ function giveloopWarning(text){
                   loop= loop+" "+node.id;
                 
               }
+  
+             
+           var connectionList = jsPlumb.getConnections();
+  
+           for(var x=0; x<connectionList.length; x++){
+           
+             conn =connectionList[x];
+             console.log("*****");
+             console.log(conn.sourceId); 
+             console.log("*****");
+   
+  
+       
+             conn.setPaintStyle({ 
+             dashstyle: "solid",
+             lineWidth: 2 ,
+             strokeStyle:"#fa0000",
           
+        })
+            }
+            
+  
+  
+   
            $("body").css("background-color","#fee");
            $("p").text( loop);
   

@@ -145,12 +145,6 @@ $(document).ready(function()  {
       
       }
   
-   jsPlumb.bind("jsPlumbConnection", function(ci) { // ci is connection info.
-    var s=ci.sourceId,t=ci.targetId;
-    console.log(s+" -> "+t);
-});
-  
- 
   
   jsPlumb.bind("connection", function(info, originalEvent) {
         var conn = info.connection;
@@ -162,15 +156,13 @@ $(document).ready(function()  {
         updateNode(node,"parentID"); 
         updateNode(node,"value");
     
-        console.log(conn);
     
-         
-        conn.setPaintStyle({ 
-          dashstyle: "solid",
-          lineWidth: 2 ,
-          strokeStyle:"#fa0000",
-          
-        })
+        
+    
+        //console.log(conn.sourceId);
+
+    
+       
     
       
         $("#"+childId).children().each(function(no,el){
@@ -198,7 +190,7 @@ $(document).ready(function()  {
    //initialzie button action to different buttons;
    jsPlumb.bind("connectionDetached", function(info, originalEvent) {
   var conn = info.connection; 
-     
+    
    var parentId=$('#'+conn.sourceId).parent().attr('id');
         var childId=$('#'+conn.targetId).parent().attr('id');
         var  paId=$('#'+conn.sourceId).parent().attr('id');
