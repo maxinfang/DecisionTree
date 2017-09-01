@@ -25,7 +25,7 @@ function redraw(history){
          drawnode(node);
 
 }
-
+      sentToparentPage();
 
       }
 }
