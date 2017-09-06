@@ -277,7 +277,7 @@ function getToleranceprob(){
                        
                     
                     if(maxemv==0){ 
-                                lnode.node.emv="0";
+                               // lnode.node.emv="0";
                                 }
                       else { // lnode.node.emv=maxemv;
                            }
