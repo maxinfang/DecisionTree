@@ -249,7 +249,7 @@ function getToleranceprob(){
             for(var m=0; m<linkedArray2.length;m++){ 
                
                 var  lnode= linkedArray2[m];
-              console.log(lnode);
+              
                 if(lnode.level==n){
                     
                     if(lnode.node.type=="S"){
@@ -269,21 +269,23 @@ function getToleranceprob(){
                 
                       //find the largest emv node;
                        if(ch[l].node.emv==maxemv)
-                           { ch[l].node.prob=1;}
-                       else{ ch[l].node.prob="0";}
+                           { //ch[l].node.prob=1;
+                           }
+                       else{// ch[l].node.prob="0";
+                           }
                       }
                        
                     
                     if(maxemv==0){ 
                                 lnode.node.emv="0";
                                 }
-                      else {  lnode.node.emv=maxemv;
+                      else { // lnode.node.emv=maxemv;
                            }
                     
                     
                   }
                   if(lnode.node.type=="C"){
-                    lnode.node.emv=circle_EMV(lnode);
+                  //  lnode.node.emv=circle_EMV(lnode);
                   
                   }
         }
