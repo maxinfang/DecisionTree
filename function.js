@@ -301,11 +301,11 @@ function giveloopWarning(text){
     }
              
     var connectionList = jsPlumb.getConnections();
-  
+    console.log(connectionList);
     for(var x=0; x<connectionList.length; x++){
            
         conn =connectionList[x];
-        
+      
          var targetId=$('#'+conn.targetId).parent().attr('id');
          var targetnode= findnode(targetId); 
         if (include(text,targetnode)){

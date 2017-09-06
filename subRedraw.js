@@ -124,7 +124,7 @@ $(document).ready(function()  {
   if(history == "" ){ 
       }
       else{ 
-      //caculate the nodes depending on email;
+      
       myNodes=deserialise(history); 
    
       myNodes_submission=deserialise(submission); 

@@ -13,7 +13,10 @@ if(array[0] != "question" && array[0] !='"question'){
 
  var mode="student";
  var _history=""; 
+ var correct_string="";
+ var namespaceforAnswer= array[0]+"_"+array[1]+"_answer"; 
  var namespaceforSub = array[0]+"_"+array[1]+"_submission";
+
  var namespaceforEntry = array[0]+"_"+array[1]+"_entry"; 
  var namespaceforLabel= array[0]+"_"+array[1]+"_label"; 
  var op= new Array();
@@ -21,7 +24,7 @@ if(array[0] != "question" && array[0] !='"question'){
 console.log(namespaceforSub);
 if(parent.document.getElementById(namespaceforSub))
    {mode ="submission";
-       console.log("11111");
+     //  console.log("11111");
    }
 else{
     mode="student";
@@ -54,9 +57,22 @@ else{
 function getLabel(){
     var element=  parent.document.getElementById(namespaceforLabel);
   if (element == null) { 
-    console.log(questionId); return;}
+    return;}
+  
     console.log( element.innerHTML);
     return element.innerHTML;
+ } 
+
+
+function getCorrectAnswer(){
+   
+  var el=parent.document.getElementById(namespaceforAnswer); 
+   if (el== null) { 
+          return;
+      }
+     console.log( el.innerHTML);
+  return el.innerHTML;
+    
  } 
 
 function getHistory(){
@@ -92,7 +108,7 @@ var element=parent.document.getElementById(namespaceforSub);
   }
 
  var op = getEntry();
- console.log(op);
+ 
  var dataLabel= getLabel(); 
  
  
@@ -117,8 +133,10 @@ $(document).ready(function()  {
      
    //check wehter we need reload or not
 
-  if(mode=="submission") { console.log("test");
+  if(mode=="submission") { 
                           _history= getSubmission();
+                          correct_string= getCorrectAnswer();
+                          console.log(correct_string);
                            
     
     }
@@ -140,8 +158,8 @@ $(document).ready(function()  {
       }
       else{ 
         
-       redraw(_history); 
-       addConnections(myNodes);
+       redraw(_history, correct_string); 
+     //  addConnections(myNodes);
       
       }
   
