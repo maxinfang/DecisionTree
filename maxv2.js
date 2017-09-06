@@ -159,7 +159,7 @@ $(document).ready(function()  {
       else{ 
         
        redraw(_history, correct_string); 
-     //  addConnections(myNodes);
+       addConnections(myNodes);
       
       }
   

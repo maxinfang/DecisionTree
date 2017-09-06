@@ -377,8 +377,7 @@ function getToleranceprob(){
                      
                      }
                
-                console.log(sub_node.nextNodes);
-                console.log(node.nextNodes);
+              
                                           
                     
             }           
