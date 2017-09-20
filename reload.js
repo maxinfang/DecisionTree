@@ -42,16 +42,16 @@ function getToleranceprob(){
       var tolerance_emv=getToleranceEMV();
       var tolerance_prob=getToleranceprob();
 
-      myNodes=deserialise(history); //submission
+  myNodes=deserialise(history); //submission
    
-      myNodes_correct=deserialise(correct_string);  //correctstring
+          myNodes_correct=deserialise(correct_string);  //correctstring
       // find the end of child;
       // calculatNode(myNodes); 
       var linkedArray= new Array(); 
       var linkedArray2= new Array(); 
       
-      var linkdeArray_sub=new Array();
-      var linkedArray2_sub= new Array(); 
+      var linkdeArray_correct=new Array();
+      var linkedArray2_correct= new Array(); 
         
         
     
@@ -70,10 +70,10 @@ function getToleranceprob(){
        
       var node=myNodes_correct[n];  
       
-      var linkedNode_sub= new NodeClass(node)
+      var linkedNode_correct= new NodeClass(node)
       //console.log(linkedNode);
-      linkdeArray_sub.push(linkedNode_sub);  
-      linkedArray2_sub.push(linkedNode_sub);
+      linkdeArray_correct.push(linkedNode_correct);  
+      linkedArray2_correct.push(linkedNode_correct);
   } 
 
         
@@ -105,17 +105,17 @@ function getToleranceprob(){
         
         
       
-     function setchildren_sub(){
+     function setchildren_correct(){
           
-        for (j=0;j<linkdeArray_sub.length;j++){ 
+        for (j=0;j<linkdeArray_correct.length;j++){ 
           
-        var linkedNode=linkdeArray_sub[j];
+        var linkedNode=linkdeArray_correct[j];
            
            // linkedNode.node.parentID;
           
           var children= new Array(); 
-              for(var n=0; n<linkedArray2_sub.length;n++){ 
-                var  thisnode= linkedArray2_sub[n];  
+              for(var n=0; n<linkedArray2_correct.length;n++){ 
+                var  thisnode= linkedArray2_correct[n];  
                 var node = thisnode.node;
                 var pID= thisnode.node.parentID;  
                if(pID== linkedNode.id){
@@ -131,9 +131,9 @@ function getToleranceprob(){
       
         
         
-           function findrootnode_sub(){
-        for(var n=0; n<linkdeArray_sub.length;n++){
-        var  rootnode= linkdeArray_sub[n];
+           function findrootnode_correct(){
+        for(var n=0; n<linkdeArray_correct.length;n++){
+        var  rootnode= linkdeArray_correct[n];
         var pid=rootnode.node.parentID;
         if(pid=="") {  
             return rootnode; };
@@ -211,7 +211,7 @@ function getToleranceprob(){
         
         
  setchildren();
- setchildren_sub();   
+ setchildren_correct();   
     
      for(var n=0; n<linkedArray.length;n++){
         var   node= linkedArray[n];
@@ -224,32 +224,38 @@ function getToleranceprob(){
         
        
         var rootnode = findrootnode();
-        var rootnode_correct=findrootnode_sub();
+        var rootnode_correct=findrootnode_correct();
         
        
         var rootnodeid = rootnode.node.id;
         
-        if(typeof rootnode_sub != 'undefined' )
+        if(typeof rootnode_correct != 'undefined' )
           {
-            var rootnodeid_sub=rootnode_sub.node.id;
-            recursive(rootnode_sub);
-            var pa_sub=new Array(); 
-             setparentlist(rootnode_sub,pa_sub);
+            var rootnodeid_correct=rootnode_correct.node.id;
+            recursive(rootnode_correct);
+            var pa_correct=new Array(); 
+             setparentlist(rootnode_correct,pa_correct);
           }
         
-        recursive(rootnode);
+       recursive(rootnode);
         
-       var pa= new Array();
+        var pa= new Array();
         setparentlist(rootnode,pa);
          
           
         var deep =rootnode.level
-        
+            
+        console.log( "deep------>");
+        console.log(deep); 
+        console.log( "<-------deep");
+          
+        //linkedArray2 is the submission array
+      
         for(var n=2; n<=deep ;n++){ 
             for(var m=0; m<linkedArray2.length;m++){ 
                
                 var  lnode= linkedArray2[m];
-              
+                 console.log(lnode);
                 if(lnode.level==n){
                     
                     if(lnode.node.type=="S"){
@@ -258,11 +264,8 @@ function getToleranceprob(){
                     var maxemv=0;
                     var   _array = new Array();
                    
-                   for(var l=0; l<ch.length; l++){
-                    
-                     _array.push(ch[l].node.emv);
-                    
-                    
+                   for(var l=0; l<ch.length; l++){ 
+                     _array.push(ch[l].node.emv);  
                     }
                       var maxemv=Math.max.apply(Math,_array);
                     for(var l=0; l<ch.length; l++){
@@ -285,7 +288,9 @@ function getToleranceprob(){
                     
                   }
                   if(lnode.node.type=="C"){
-                  //  lnode.node.emv=circle_EMV(lnode);
+                   if( lnode.node.emv !=circle_EMV(lnode)){ 
+                       lnode.node.redEMV=false;
+                       }
                   
                   }
         }
@@ -293,12 +298,7 @@ function getToleranceprob(){
         }
            
          
-     //  recursiveemv(rootnode); 
-    //  recursive(rootnode); 
-        
-        
-        
-    //
+    
     
         
      
@@ -307,70 +307,70 @@ function getToleranceprob(){
       
            var node=  myNodes[n]; 
            
-           node.color="red";  
-           node.redEMV=false; 
-            node.redprob=false;
-           for(m=0; m< linkdeArray_sub.length;m++){  
-               var sub_node= linkdeArray_sub[m];  
-             
-             if ((sub_node.node.value == node.value ) ||
-           (sub_node.node.value == "" && node.value == "0") ||
-          (sub_node.node.value == "0" && node.value == ""))
+           // node.color="red";  
+           // node.redEMV=false; 
+           // node.redprob=false;
+           for(m=0; m< linkdeArray_correct.length;m++){  
+               var correct_node= linkdeArray_correct[m];   
+             console.log("~~~~~~~~");
+             console.log(node);
+             console.log(correct_node);
+             if ((correct_node.node.value == node.value ) ||
+           (correct_node.node.value == "" && node.value == "0") ||
+          (correct_node.node.value == "0" && node.value == ""))
             {   
-              if(node.parentlist.compare(sub_node.node.parentlist)) { 
+              if(node.parentlist.compare(correct_node.node.parentlist)) { 
                     node.color="green"; 
                      
-                    if(node.type != sub_node.node.type)  {node.color="orange";}
+                    if(node.type != correct_node.node.type)  {node.color="orange";}
                 
                 
-                   // if(node.emv != sub_node.emv)  {node.color="orange";
-                    
-                                                                               
+                   // if(node.emv != sub_node.emv)  {node.color="orange";                                        
                                                   //type is cycle
                                          //type is cycle
-                     if(sub_node.node.type=='T'){
+                     if(correct_node.node.type=='T'){
                        
-                            if  (!checkTolerance(sub_node.node.emv,node.emv,tolerance_emv)) { 
-                              node.color="orange";// making emv box red
-                               node.redEMV=true;
+                            if  (!checkTolerance(correct_node.node.emv,node.emv,tolerance_emv)) { 
+                            //  node.color="orange";// making emv box red
+                             //  node.redEMV=true;
                             }   
                            
                      }   
                 
-                     if(sub_node.node.type=='S'){ 
+                     if(correct_node.node.type=='S'){ 
                          
-                           if(!checkTolerance(sub_node.node.emv,square_EMV(sub_node),tolerance_emv) && !checkTolerance(sub_node.node.emv,node.emv ,tolerance_emv)   )  {
-                                     node.color="orange";// making emv box red
-                                     node.redEMV=true;
+                           if(!checkTolerance(correct_node.node.emv,square_EMV(correct_node),tolerance_emv) && !checkTolerance(correct_node.node.emv,node.emv ,tolerance_emv)   )  {
+                                    // node.color="orange";// making emv box red
+                                   //  node.redEMV=true;
                            }
                               
                      }
                 
-                       if(sub_node.node.type=='C'){ 
+                       if(correct_node.node.type=='C'){ 
                         
-                           if( !checkTolerance(sub_node.node.emv, circle_EMV(sub_node),tolerance_emv) && !checkTolerance(sub_node.node.emv,node.emv ,tolerance_emv)    )  {
-                                     node.color="orange";// making emv box red
-                                      node.redEMV=true;
+                           if( !checkTolerance(correct_node.node.emv, circle_EMV(correct_node),tolerance_emv) && !checkTolerance(correct_node.node.emv,node.emv ,tolerance_emv)    )  {
+                                    // node.color="orange";// making emv box red
+                                    //  node.redEMV=true;
                            }
                                                      
                       
                      }
                
-             if(sub_node.node.parentID !=""){
-                     if(sub_node.node.type=='S'){ 
+             if(correct_node.node.parentID !=""){
+                     if(correct_node.node.type=='S'){ 
                        
      
-                       if(!checkTolerance(sub_node.node.prob,square_child_prob(sub_node), tolerance_prob) && !checkTolerance(sub_node.node.prob,node.prob ,tolerance_prob)  )  {
-                                     node.color="orange";// making  prob  box red
-                                     node.redprob=true;
+                       if(!checkTolerance(correct_node.node.prob,square_child_prob(correct_node), tolerance_prob) && !checkTolerance(correct_node.node.prob,node.prob ,tolerance_prob)  )  {
+                                     //node.color="orange";// making  prob  box red
+                                    // node.redprob=true;
                            }
                               
                      }
                      else{
                            
-                               if(!checkTolerance(sub_node.node.prob,node.prob ,tolerance_prob))  {
-                                     node.color="orange";
-                                     node.redprob=true;
+                               if(!checkTolerance(correct_node.node.prob,node.prob ,tolerance_prob))  {
+                                   //  node.color="orange";
+                                   //  node.redprob=true;
                                    
                                    // making  prob  box red
                            }
