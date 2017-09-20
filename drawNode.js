@@ -11,7 +11,7 @@ function drawnode(node){
       if(node.top==""){ 
        }
        else{
-         console.log("set position");
+      //   console.log("set position");
       $(newdiv).css({ top: node.top, left: node.left });
       } 
       
@@ -34,7 +34,7 @@ function drawnode(node){
     if(mode =="student") { $(newdiv).append(deletezone); } 
       $(newdiv).append(dragzone); 
        
-      console.log(node);
+     // console.log(node);
      addShapewithColor(node.type,dragzone,node.color); 
      
   var dropL;

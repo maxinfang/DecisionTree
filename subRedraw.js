@@ -292,6 +292,25 @@ $(document).ready(function()  {
      
   }     
         
+  function setchildrensets(node){
+    
+    var currentnode= node; 
+    
+    var nextnodes= currentnode.nextNodes;
+    
+    var sets= new Array();
+    
+    for(var l=0; l<nextnodes.length;l++){
+        
+         sets.push(nextnodes[l].id);  
+     
+   }
+    
+   node.node.childrentsets = sets;
+  
+  
+  }
+        
         
  setchildren();
  setchildren_sub();   
@@ -299,11 +318,20 @@ $(document).ready(function()  {
      for(var n=0; n<linkedArray.length;n++){
         var   node= linkedArray[n];
        
-              console.log("*******DD");
-              console.log(node);
+              setchildrensets(node);
  
  
       } 
+        
+     for(var n=0; n<linkdeArray_sub.length;n++){
+        var   node=linkdeArray_sub[n];
+       
+              setchildrensets(node);
+ 
+ 
+      }     
+     
+         
         
        
         var rootnode = findrootnode();
@@ -332,7 +360,7 @@ $(document).ready(function()  {
             for(var m=0; m<linkedArray2.length;m++){ 
                
                 var  lnode= linkedArray2[m];
-              console.log(lnode);
+        //      console.log(lnode);
                 if(lnode.level==n){
                     
                     if(lnode.node.type=="S"){
@@ -384,25 +412,41 @@ $(document).ready(function()  {
         
      
         
-    for(n=0; n<myNodes.length;n++){  
-      
-           var node=  myNodes[n]; 
-           
+    for(n=0; n<linkedArray.length;n++){  
+           var linkednode=linkedArray[n];
+           var node=  linkednode.node; 
+       //    console.log(linkednode);
            node.color="red";  
            node.redEMV=false; 
-            node.redprob=false;
+           node.redprob=false;
+      
+          
+      
            for(m=0; m< linkdeArray_sub.length;m++){  
                var sub_node= linkdeArray_sub[m];  
              
+               
+             // console.log(linkednode.node.childrentsets);
+             
+            // console.log(sub_node.node.childrentsets);
              if ((sub_node.node.value == node.value ) ||
            (sub_node.node.value == "" && node.value == "0") ||
           (sub_node.node.value == "0" && node.value == ""))
             {   
               if(node.parentlist.compare(sub_node.node.parentlist)) { 
-                    node.color="green"; 
-                     
-                    if(node.type != sub_node.node.type)  {node.color="orange";}
+                       node.color="green"; 
                 
+                  var   childrenofsub= sub_node.node.childrentsets.sort();
+                  var   childrenofcorrect= linkednode.node.childrentsets.sort();
+                
+               
+                    if(!childrenofsub.compare(childrenofcorrect)) {node.color="yellow";}
+               
+                     
+                    if(node.type.trim() != sub_node.node.type.trim())  {
+                      node.color="orange";
+                    }
+                    
                 
                    // if(node.emv != sub_node.emv)  {node.color="orange";
                     
@@ -495,7 +539,7 @@ $(document).ready(function()  {
         
    for(n=0; n<myNodes.length;n++){ 
          var node= myNodes[n]; 
-         console.log( node);
+       //  console.log( node);
          drawnode(node);
         
    }

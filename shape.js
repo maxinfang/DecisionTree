@@ -2,8 +2,9 @@
  
 var Color="#fa0000";
 
+
 //if(mode=="correct") { Color= "#5cc902"};
-if(mode=="correct") { Color= "#ffa500"}; //orange
+if(mode=="correct") { Color= "#ffa500"};  
 if(mode=="submission") { Color= "#0060bf"};  
 
 function addShapewithColor(type,dragzone,color){
@@ -11,6 +12,7 @@ function addShapewithColor(type,dragzone,color){
   if(color =="orange") Color="#ffa500";
   if(color =="green") Color ="#5cc902";
   if(color =="grey") Color ="#808080"; //testing color
+  if(color =="yellow") Color ="#FFFF00";
   
   
   if (type=="T") {addTriangle(dragzone);}

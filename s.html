@@ -3,7 +3,17 @@
    
    <title>Max Decision tree and input images Demo</title> 
        
-    
+   <link rel="stylesheet" type="text/css" href="https://mapleta.telt.unsw.edu.au:8443/mapleta/modules/skin/css/jquery.ui.css">
+ 
+      <script src="https://mapleta.telt.unsw.edu.au:8443/mapleta/modules/scripts/jquery/jquery-1.4.1.min.js"></script>
+    <script src="https://mapleta.telt.unsw.edu.au:8443/mapleta/modules/scripts/jquery/jquery-ui.min.js"></script>
+     
+  <script
+    src="https://mapleta.telt.unsw.edu.au:8443/mapleta/modules/scripts/buttons.js"></script>
+  <script
+    src="https://mapleta.telt.unsw.edu.au:8443/mapleta/modules/skin/scripts/buttons.js"></script>
+  <script src="https://mapleta.telt.unsw.edu.au:8443/mapleta/modules/scripts/main.js"></script>
+  <script   src="https://mapleta.telt.unsw.edu.au:8443/mapleta/modules/skin/scripts/menubar.js"></script>
       <style>
         #question_brick{width:800; height:600;    }
       
@@ -11,38 +21,15 @@
   
    </head>  
 <body>
+  
+  
+  <p>A company is has purchased some beachfront property that it intends to develop into a resort. However, it is uncertain how much future demand there will be for its resort and it is concerned about overcapitalising. Thus it is unsure whether to build a large resort or a small resort. An engineer suggests to the company that they might build a small resort now and expand it later if the demand is high enough.</p><p>The land available is limited so if the company decides to build a small resort now and wishes to obtain the option to expand it later then expansion must be built over the initial stage. This means that the initial stage must be designed to be adaptable so that it can incorporate the expansion if necessary, which will increase its cost.</p><p>The company has made the following estimates:</p><table border="1" cellpadding="2" cellspacing="2"> <tbody> <tr> <td>&nbsp;</td> <td>Cost</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td><span id="question_resort_entry_9">Non adaptable small resort</span></td> <td>3,800</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td><span id="question_resort_entry_10">Adaptable small resort</span></td> <td>4,400</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td><span id="question_resort_entry_12">Expand the adaptable small resort</span></td> <td>3,600</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td><span id="question_resort_entry_13">Simple large resort</span></td> <td>7,700</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td>&nbsp;</td> <td>&nbsp;</td> <td colspan="2" rowspan="1" style="text-align: center;">Small resort</td> <td colspan="2" rowspan="1" style="text-align: center;">Large resort</td> </tr> <tr> <td>&nbsp;</td> <td>Probability</td> <td>Income for first period</td> <td>Income for second period</td> <td>Income for first period</td> <td>Income for second period</td> </tr> <tr> <td><span id="question_resort_entry_1">Initial low growth</span></td> <td>0.48</td> <td>2,100</td> <td>&nbsp;</td> <td>2,500</td> <td>&nbsp;</td> </tr> <tr> <td> <ul> <li><span id="question_resort_entry_3">Later low growth</span></li> </ul> </td> <td>0.9</td> <td>&nbsp;</td> <td>3,500</td> <td>&nbsp;</td> <td>3,700</td> </tr> <tr> <td> <ul> <li><span id="question_resort_entry_4">Later high growth</span></li> </ul> </td> <td>0.1</td> <td>&nbsp;</td> <td>4,000</td> <td>&nbsp;</td> <td>5,800</td> </tr> <tr> <td><span id="question_resort_entry_2">Initial high growth</span></td> <td>0.52</td> <td>2,600</td> <td>&nbsp;</td> <td>3,400</td> <td>&nbsp;</td> </tr> <tr> <td> <ul> <li>Later low growth</li> </ul> </td> <td>0.2</td> <td>&nbsp;</td> <td>4,000</td> <td>&nbsp;</td> <td>4,900</td> </tr> <tr> <td> <ul> <li>Later high growth</li> </ul> </td> <td>0.8</td> <td>&nbsp;</td> <td>4,500</td> <td>&nbsp;</td> <td>9,200</td> </tr> </tbody></table><p>Use the applet below to draw a decision tree that represents this situation and show all EMVs and probabilities. Indicate selection of decision options with probability = 1 for preferred options and probability = 0 for rejected options.</p><p>Monetary values should be answered to the nearest dollar. Probabilities should be answered to three decimal places. Do not include dollar signs or commas.</p><p>Hint: In this problem there are two time periods.</p><ul> <li>If the company builds the non adaptable small resort or the simple large resort then their profit will be the income that they make in the first period plus the income they make in the second period minus the cost of the resort.</li> <li>If the company builds the adaptable small resort then at the end of the period they will get to decide if they want to expand it or not. If they decide not to expand it then they will recieve the small resort income in both periods and pay the cost of the adaptable small resort. If they do decide to expand it then they will get the small resort income in the first period and the large resort income in the second period and they will have to pay both the adaptable small resort cost and the expand the resort cost.</li></ul><p>&nbsp;</p><p style="display: none"><span id="question_resort_label">EMV</span><span id="question_resort_entry_5">Low then low growth</span><span id="question_resort_entry_6">Low then high growth</span><span id="question_resort_entry_7">High then low growth</span><span id="question_resort_entry_8">High then high growth</span><span id="question_resort_entry_11">Don't expand the adaptable small resort</span></p> 
 
-<p>The Acme Brickpit has won a tender to produce custom bricks for a 
-construction company. The construction company will be building one or two 
-buildings using these bricks. The contract between Acme and the company 
-stipulates that Acme is to supply 160,000 bricks for the first building this month 
-and, if <span id="question_brick_entry_1">both buildings are built</span>, 
-another 160,000 bricks in four months' time. It will be paid 7 per brick.
-</p>
-<p>It will cost Acme $350,000 to set up for a production run of the bricks, 
-regardless of how many bricks it makes at that time, plus $5 per brick. If it 
-decides to <span id="question_brick_entry_2">make all  $320,000 bricks 
-</span> in a single run then it will also cost $30,000 to store the second 
-half of the bricks until they are needed for the second building (even if it does 
-not go ahead). If it decides to only <span id="question_brick_entry_3">make 160,000 bricks  in the first run </span> then there will be no storage cost (and 
-the second 160,000 bricks will not be made if the second building does not 
-go ahead) but the $350,000 set up cost will need to be paid again if the 
-second building does go ahead.</p>
-<p>However, the second building is not guaranteed to proceed. If <span 
-id="question_brick_entry_4"> one building only </span>is built then Acme 
-will have to sell the extra bricks on the open market, where it expects to only 
-get $1 per brick because of their unusual design.Acme believes that 
-the probability of the second building proceeding is 0.39.Monetary 
-values should be answered to the nearest dollar. Probabilities should be 
-answered to three decimal places. Do not include dollar signs or commas.
-</p>
-
-  <p>The correct answer is given by:</p>
-<div id="resizable"><iframe id="question_brick" height="750" src="student.html" width="950">You will need a browser that supports iframes.</iframe></div>
-<p>Correct String: <span id="question_brick_answer"> Sb1bb8b226bbbbaTb2b4b199b51b0bb1baCb3b2b185b225bbb1baCb4b3b175b418bbb1baTb5b5b358b50b-2000.0b0.36b3baTb6b0b501b107b400.0b0.3968b3baTb7b1b605b194b-1200.0b0.2432b3baTb8b5b379b303b-2000.0b0.77b4baTb9bb518b387b3400.0b0.1426b4baTb10b1b378b486b1800.0b0.0874b4ba</span></p>
-<input type='hidden' name="ans.0.type" value="list">
-<input type="hidden" name="ans.0.length" value="1">
+<span id="question_resort_tolerance_EMV">1</span>
+<span id="question_resort_tolerance_prob">0.01</span> 
+<div id="resizable"><iframe id="question_resort_questionn" height="1750" src="student.html" width="1950">You will need a browser that supports iframes.</iframe></div>
+  
  student answer String: <input type="text" name="ans.0.0" value="" size="60">  
- <p>Student String: <span id="question_brick_submission">Cb2b0b298b66b2b0b8baCb4b0b271b347b2b1b8baTb5b0b512b8b1b1b2baTb6b1b517b199b1b0b2baTb7b2b521b370b1b1b4baSb8b0b43b248b3bbba</span></p>
+ <p>Student String: <span id="question_brick_submission">Sb1b0b19.997159004211426b184.99715900421143bbbbaCb2b8b348.9971590042114b42.997159004211426bbb1baTb3b4b655.9971590042114b15.997159004211426bbb2baTb4b6b638.9971590042114b172.99715900421143bbb2ba</span></p>
 
-</body>
+  

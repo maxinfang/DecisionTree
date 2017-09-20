@@ -216,8 +216,7 @@ function getToleranceprob(){
      for(var n=0; n<linkedArray.length;n++){
         var   node= linkedArray[n];
        
-              console.log("*******DD");
-              console.log(node);
+              
  
  
       } 
@@ -256,6 +255,7 @@ function getToleranceprob(){
                
                 var  lnode= linkedArray2[m];
                  console.log(lnode);
+               
                 if(lnode.level==n){
                     
                     if(lnode.node.type=="S"){
@@ -270,7 +270,7 @@ function getToleranceprob(){
                       var maxemv=Math.max.apply(Math,_array);
                     for(var l=0; l<ch.length; l++){
                 
-                      //find the largest emv node;
+                      
                        if(ch[l].node.emv==maxemv)
                            { //ch[l].node.prob=1;
                            }
@@ -282,15 +282,15 @@ function getToleranceprob(){
                     if(maxemv==0){ 
                                // lnode.node.emv="0";
                                 }
-                      else { // lnode.node.emv=maxemv;
+                      else {   // lnode.node.emv=maxemv;
                            }
                     
                     
                   }
                   if(lnode.node.type=="C"){
-                   if( lnode.node.emv !=circle_EMV(lnode)){ 
-                       lnode.node.redEMV=false;
-                       }
+                   //if( lnode.node.emv !=circle_EMV(lnode)){ 
+                              //     lnode.node.redEMV=true;
+                    //   }
                   
                   }
         }
@@ -307,14 +307,20 @@ function getToleranceprob(){
       
            var node=  myNodes[n]; 
            
-           // node.color="red";  
-           // node.redEMV=false; 
-           // node.redprob=false;
+            //   node.color="red";  
+            // node.redEMV=false; 
+            // node.redprob=false;
            for(m=0; m< linkdeArray_correct.length;m++){  
                var correct_node= linkdeArray_correct[m];   
-             console.log("~~~~~~~~");
-             console.log(node);
-             console.log(correct_node);
+               console.log(node);
+               node.redEMV=true;
+               node.redprob=true;
+             
+               console.log("~~~~~~~~~~~");
+               console.log(correct_node);
+               console.log(node); 
+               console.log("~~~~~~~~~~");
+             
              if ((correct_node.node.value == node.value ) ||
            (correct_node.node.value == "" && node.value == "0") ||
           (correct_node.node.value == "0" && node.value == ""))
@@ -322,10 +328,8 @@ function getToleranceprob(){
               if(node.parentlist.compare(correct_node.node.parentlist)) { 
                     node.color="green"; 
                      
-                    if(node.type != correct_node.node.type)  {node.color="orange";}
-                
-                
-                   // if(node.emv != sub_node.emv)  {node.color="orange";                                        
+                    if(node.type != correct_node.node.type)  {node.color="orange";} 
+           // if(node.emv != sub_node.emv)  {node.color="orange";                                        
                                                   //type is cycle
                                          //type is cycle
                      if(correct_node.node.type=='T'){
@@ -361,18 +365,18 @@ function getToleranceprob(){
                        
      
                        if(!checkTolerance(correct_node.node.prob,square_child_prob(correct_node), tolerance_prob) && !checkTolerance(correct_node.node.prob,node.prob ,tolerance_prob)  )  {
-                                     //node.color="orange";// making  prob  box red
-                                    // node.redprob=true;
+                            //node.color="orange";// making  prob  box red
+                                  
                            }
                               
                      }
                      else{
                            
                                if(!checkTolerance(correct_node.node.prob,node.prob ,tolerance_prob))  {
-                                   //  node.color="orange";
-                                   //  node.redprob=true;
+                          //  node.color="orange";
+                          //  node.redprob=true;
                                    
-                                   // making  prob  box red
+                          // making  prob  box red
                            }
                               
                      

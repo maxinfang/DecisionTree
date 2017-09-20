@@ -27,9 +27,9 @@ if (!Array.prototype.indexOf)
 if (!Array.prototype.compare)
 {
 Array.prototype.compare = function(testArr) {
-  console.log("*****************************************************************");
-  console.log(this);
-  console.log(testArr);
+  //console.log("*****************************************************************");
+ // console.log(this);
+//  console.log(testArr);
     if (this.length != testArr.length) return false;
     for (var i = 0; i < testArr.length; i++) {
         if ((this[i] == "" && testArr[i] == "0") ||
