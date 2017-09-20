@@ -27,17 +27,17 @@ function getToleranceprob(){
   
      if (myNodes == []) return;
        
-       if(mode != "submission"){
+      
     for(n=0; n<myNodes.length;n++){ 
          var node= myNodes[n];
        console.log(node);
          drawnode(node);
        } 
   
-    if(mode!="submission") {sentToparentPage();}
+    sentToparentPage();
   
-}
-    if(mode =="submission"){
+ 
+    if(mode =="temportycode"){
       
       var tolerance_emv=getToleranceEMV();
       var tolerance_prob=getToleranceprob();

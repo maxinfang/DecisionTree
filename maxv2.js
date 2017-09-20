@@ -24,7 +24,7 @@ if(array[0] != "question" && array[0] !='"question'){
 console.log(namespaceforSub);
 if(parent.document.getElementById(namespaceforSub))
    {mode ="submission";
-     //  console.log("11111");
+       console.log("submode");
    }
 else{
     mode="student";
