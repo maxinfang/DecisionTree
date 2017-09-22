@@ -35,7 +35,7 @@ function drawnode(node){
       $(newdiv).append(dragzone); 
        
      // console.log(node);
-     addShapewithColor(node.type,dragzone,node.color); 
+     addShapewithColor(node.type,dragzone,node.color,node.dotcolor); 
      
   var dropL;
   var dropLid;

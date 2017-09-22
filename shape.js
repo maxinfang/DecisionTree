@@ -1,18 +1,22 @@
 
  
 var Color="#fa0000";
+var dotColor="#456";
+var strokecolor="black";
 
 
 //if(mode=="correct") { Color= "#5cc902"};
 if(mode=="correct") { Color= "#ffa500"};  
 if(mode=="submission") { Color= "#0060bf"};  
 
-function addShapewithColor(type,dragzone,color){
+function addShapewithColor(type,dragzone,color,dotcolor){
   if(color =="red") Color="#d9534f";
   if(color =="orange") Color="#ffa500";
   if(color =="green") Color ="#5cc902";
   if(color =="grey") Color ="#808080"; //testing color
-  if(color =="yellow") Color ="#FFFF00";
+  if(dotcolor =="red") dotColor="red";
+  if(color =="outlinered") { strokecolor="red";}
+  else { strokecolor="balck";}
   
   
   if (type=="T") {addTriangle(dragzone);}
@@ -40,12 +44,13 @@ function addDiamond(dragzone) {
     var diamond= paper.path( "M0 50L 50 100L100 50L50 0Z")
            .attr({
             fill : Color,
-            stroke : "black",
-            strokeWidth : 0,
+            stroke : strokecolor,
+            'stroke-width': 2,
             r : 5
       }); 
      var sourcePoint= {
         anchor:"Right", 
+         paintStyle:{ fillStyle: dotColor},
          connectorStyle: {
             lineWidth: 2,
             strokeStyle: '#666'
@@ -74,12 +79,15 @@ function addDiamond(dragzone) {
 function addRect(dragzone) { 
    var paper = new Raphael(
         $(dragzone).get(0), 100,100); 
-         var rect =paper.rect(0, 0, 98, 98)
+         var rect =paper.rect(1, 1, 98, 98)
            .attr({
-            fill : Color
+            fill : Color,
+            stroke : strokecolor,
+            'stroke-width': 2
         }); 
     var sourcePoint= {
         anchor:"Right", 
+        paintStyle:{ fillStyle: dotColor},
          connectorStyle: {
             lineWidth: 2,
             strokeStyle: '#666'
@@ -111,12 +119,13 @@ function addTriangle(dragzone) {
     var triangle =paper.path( "M0 80L 100 80L50 0Z")
            .attr({
             fill : Color,
-            stroke : "black",
-            strokeWidth : 0,
+            stroke : strokecolor,
+            'stroke-width': 2,
             r : 5
       }); 
      var sourcePoint= {
         anchor:"BottomRight", 
+         paintStyle:{ fillStyle: dotColor},
          connectorStyle: {
             lineWidth: 2,
             strokeStyle: '#666'
@@ -148,10 +157,13 @@ function addTriangle(dragzone) {
     var circle =paper.circle(50, 50)
            .attr({
             fill : Color, 
-            r : 45
+            r : 45,
+             stroke : strokecolor,
+            'stroke-width': 2
         }); 
     var sourcePoint= {
         anchor:"Right", 
+        paintStyle:{ fillStyle: dotColor},
          connectorStyle: {
             lineWidth: 2,
             strokeStyle: '#666'
@@ -203,8 +215,8 @@ function addTriangle(dragzone) {
      var hexagon=paper.path(hpath)
            .attr({
             fill : Color,
-            stroke : "black",
-            strokeWidth : 0
+            stroke : strokecolor,
+            'stroke-width': 2,
              
       });
     
@@ -212,6 +224,7 @@ function addTriangle(dragzone) {
     
     var sourcePoint= {
         anchor:"Right", 
+        paintStyle:{ fillStyle: dotColor},
          connectorStyle: {
             lineWidth: 2,
             strokeStyle: '#666'

@@ -438,14 +438,19 @@ $(document).ready(function()  {
                 
                   var   childrenofsub= sub_node.node.childrentsets.sort();
                   var   childrenofcorrect= linkednode.node.childrentsets.sort();
-                
+                  
                
-                    if(!childrenofsub.compare(childrenofcorrect)) {node.color="yellow";}
+                    if(!childrenofsub.compare(childrenofcorrect)) {
+                                          node.dotcolor="red";
+                      
+                    
+                    }
                
                      
                     if(node.type.trim() != sub_node.node.type.trim())  {
-                      node.color="orange";
+                      node.color="outlinered";
                     }
+                   
                     
                 
                    // if(node.emv != sub_node.emv)  {node.color="orange";
