@@ -458,7 +458,7 @@ $(document).ready(function()  {
                                                                                
                                                   //type is cycle
                                          //type is cycle
-                     if(sub_node.node.type=='T'){
+                     if(node.type=='T'){
                        
                             if  (!checkTolerance(sub_node.node.emv,node.emv,tolerance_emv)) { 
                               node.color="orange";// making emv box red
@@ -467,7 +467,7 @@ $(document).ready(function()  {
                            
                      }   
                 
-                     if(sub_node.node.type=='S'){ 
+                     if(node.type=='S'){ 
                          
                            if(!checkTolerance(sub_node.node.emv,square_EMV(sub_node),tolerance_emv) && !checkTolerance(sub_node.node.emv,node.emv ,tolerance_emv)   )  {
                                      node.color="orange";// making emv box red
@@ -476,7 +476,7 @@ $(document).ready(function()  {
                               
                      }
                 
-                       if(sub_node.node.type=='C'){ 
+                       if(node.type=='C'){ 
                         
                            if( !checkTolerance(sub_node.node.emv, circle_EMV(sub_node),tolerance_emv) && !checkTolerance(sub_node.node.emv,node.emv ,tolerance_emv)    )  {
                                      node.color="orange";// making emv box red
@@ -486,8 +486,8 @@ $(document).ready(function()  {
                       
                      }
                
-             if(sub_node.node.parentID !=""){
-                     if(sub_node.node.type=='S'){ 
+             if(node.parentID !=""){
+                     if(node.type=='S'){ 
                        
      
                        if(!checkTolerance(sub_node.node.prob,square_child_prob(sub_node), tolerance_prob) && !checkTolerance(sub_node.node.prob,node.prob ,tolerance_prob)  )  {
@@ -509,8 +509,8 @@ $(document).ready(function()  {
                      
                      }
                
-                console.log(sub_node.nextNodes);
-                console.log(node.nextNodes);
+               // console.log(sub_node.nextNodes);
+               // console.log(node.nextNodes);
               //if(node.childrent != sub_node.chilist) add another list comparing the children value; something that can do later                
                                                
                     
