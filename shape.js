@@ -15,7 +15,7 @@ function addShapewithColor(type,dragzone,color,dotcolor){
   if(color =="green") Color ="#5cc902";
   if(color =="grey") Color ="#808080"; //testing color
   if(dotcolor =="red") dotColor="red";
-  if(color =="outlinered") { strokecolor="red";}
+  if(color =="outlinered") { strokecolor="red"; Color ="#ffa500";}
   else { strokecolor="balck";}
   
   
