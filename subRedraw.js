@@ -302,7 +302,7 @@ $(document).ready(function()  {
     
     for(var l=0; l<nextnodes.length;l++){
         
-         sets.push(nextnodes[l].id);  
+         sets.push(nextnodes[l].value);  
      
    }
     
@@ -426,7 +426,7 @@ $(document).ready(function()  {
                var sub_node= linkdeArray_sub[m];  
              
                
-             // console.log(linkednode.node.childrentsets);
+             console.log(linkednode.node);
              
             // console.log(sub_node.node.childrentsets);
              if ((sub_node.node.value == node.value ) ||
@@ -439,7 +439,7 @@ $(document).ready(function()  {
                   var   childrenofsub= sub_node.node.childrentsets.sort();
                   var   childrenofcorrect= linkednode.node.childrentsets.sort();
                   
-               
+                  
                     if(!childrenofsub.compare(childrenofcorrect)) {
                                           node.dotcolor="red";
                       
