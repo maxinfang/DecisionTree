@@ -426,7 +426,7 @@ $(document).ready(function()  {
                var sub_node= linkdeArray_sub[m];  
              
                
-             console.log(linkednode.node);
+             //console.log(linkednode.node);
              
             // console.log(sub_node.node.childrentsets);
              if ((sub_node.node.value == node.value ) ||
@@ -448,7 +448,7 @@ $(document).ready(function()  {
                
                      
                     if(node.type.trim() != sub_node.node.type.trim())  {
-                      node.color="outlinered";
+                      node.outlinecolor="outlinered";
                     }
                    
                     

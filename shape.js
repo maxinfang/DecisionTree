@@ -9,14 +9,14 @@ var strokecolor="black";
 if(mode=="correct") { Color= "#ffa500"};  
 if(mode=="submission") { Color= "#0060bf"};  
 
-function addShapewithColor(type,dragzone,color,dotcolor){
+function addShapewithColor(type,dragzone,color,dotcolor,outlinecolor){
   if(color =="red") Color="#d9534f";
   if(color =="orange") Color="#ffa500";
   if(color =="green") Color ="#5cc902";
   if(color =="grey") Color ="#808080"; //testing color
   if(dotcolor =="red") {dotColor="red";Color ="#ffa500";}
   else {dotColor="#456"}
-  if(color =="outlinered") { strokecolor="red"; Color ="#ffa500";}
+  if(outlinecolor =="outlinered") { strokecolor="red";  }
   else { strokecolor="balck";}
   
   
