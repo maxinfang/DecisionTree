@@ -288,7 +288,7 @@ function getToleranceprob(){
      for(var n=0; n<linkedArray.length;n++){
         var  node= linkedArray[n].node; 
        
-     
+            node.color="red"; 
        
          for(m=0; m< linkdeArray_correct.length;m++){  
                var correct_node= linkdeArray_correct[m].node;  
@@ -299,8 +299,12 @@ function getToleranceprob(){
             {   
               if(node.parentlist.compare(correct_node.parentlist)) { 
                        node.color="green";   }  
+               console.log("~~~~~~~~~~~~");
               
-              
+                 console.log( childrenofsub );
+             
+                 console.log( childrenofcorrect );
+               console.log("~~~~~~~~~~~~");
          var   childrenofsub= node.childrentsets.sort();
          var    childrenofcorrect= correct_node.childrentsets.sort(); 
                   if(!childrenofsub.compare(childrenofcorrect)) {
@@ -308,8 +312,10 @@ function getToleranceprob(){
                       
                     
                    }
+                console.log("~~~~~~~~~~~~");
                 console.log(node);
                 console.log(correct_node);
+                console.log("~~~~~~~~~~~~~");
                      
                     if(node.type.trim() != correct_node.type.trim())  {
                       node.outlinecolor="outlinered";
