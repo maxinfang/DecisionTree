@@ -298,7 +298,7 @@ function getToleranceprob(){
           (correct_node.value == "0" && node.value == ""))
             {   
               if(node.parentlist.compare(correct_node.parentlist)) { 
-                       node.color="green";   }  
+                       node.color="green";   
                console.log("~~~~~~~~~~~~");
               
                  console.log( childrenofsub );
@@ -324,6 +324,7 @@ function getToleranceprob(){
               
        
        }
+           }  
            
        }
        //compare the parent list to give the red color 
