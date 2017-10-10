@@ -37,7 +37,7 @@ Array.prototype.compare = function(testArr) {
           // accept empty string = 0
                 continue;
         }
-        else if (this[i] !== testArr[i]) return false;
+        else if (this[i] != testArr[i]) return false;
     }
   console.log("found!");
     return true;
