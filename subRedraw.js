@@ -449,6 +449,7 @@ $(document).ready(function()  {
                      
                     if(node.type.trim() != sub_node.node.type.trim())  {
                       node.outlinecolor="outlinered";
+                      node.color ="orange";
                     }
                    
                     
