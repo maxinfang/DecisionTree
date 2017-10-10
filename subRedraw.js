@@ -298,11 +298,12 @@ $(document).ready(function()  {
     
     var nextnodes= currentnode.nextNodes;
     
+    
     var sets= new Array();
     
     for(var l=0; l<nextnodes.length;l++){
         
-         sets.push(nextnodes[l].value);  
+         sets.push(nextnodes[l].node.value);  
      
    }
     
@@ -438,8 +439,11 @@ $(document).ready(function()  {
                 
                   var   childrenofsub= sub_node.node.childrentsets.sort();
                   var   childrenofcorrect= linkednode.node.childrentsets.sort();
-                  
-                  
+                  console.log("~~~~~~~");
+                  console.log( childrenofsub);
+                console.log(childrenofcorrect);
+                
+                 console.log("~~~~~~~");
                     if(!childrenofsub.compare(childrenofcorrect)) {
                                           node.dotcolor="red";
                       
