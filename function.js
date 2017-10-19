@@ -429,7 +429,9 @@ function checkloop(){
 }
 
 function sentToparentPage()
-{ console.log(myNodes);
+{ 
+  
+  console.log(myNodes);
   checkloop();
   //giveWarning();
   var answervalue = serialise(myNodes); 
