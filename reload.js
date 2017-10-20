@@ -413,10 +413,8 @@ function getToleranceprob(){
                            console.log(square_child_prob(linkedArray[n]));
                            
                          //  console.
-                         if(!((linkedArray[n].prevNode.node.type=="S" ||linkdeArray_correct[m].prevNode.node.type=="S")&&checkTolerance(square_child_prob(linkedArray[n]),node.prob ,tolerance_prob))){
-                                  // console.log(linkedArray[n]);
-                                  // console.log(linkdeArray_correct[m]); 
-                         
+                         if(!((linkedArray[n].prevNode.node.type=="S" ||linkdeArray_correct[m].prevNode.node.type=="S")&&checkTolerance(square_child_prob(linkedArray[n],tolerance_emv),node.prob ,tolerance_prob))){
+                                 
                                    node.color="orange";
                                    node.redprob=true;
                                    }
