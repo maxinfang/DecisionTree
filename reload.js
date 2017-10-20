@@ -365,7 +365,7 @@ function getToleranceprob(){
                 
                      if(node.type=='T'){ 
                             if  (!checkTolerance( node.emv,correct_node.emv,tolerance_emv)) { 
-                               node.color="red";// making emv box red
+                               node.color="orange";// making emv box red
                                node.redEMV=true;
                             }   
                            
