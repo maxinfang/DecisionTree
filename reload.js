@@ -395,21 +395,21 @@ function getToleranceprob(){
                        
                        // 
                        
-                       if(node.type=='S'){   
+                      /* if(node.type=='S'){   
                          if(!checkTolerance(node.prob,square_child_prob(linkedArray[n]), tolerance_prob) && !checkTolerance(correct_node.prob,node.prob ,tolerance_prob)  ) 
                          {
                                      node.color="orange"; 
                                      node.redprob=true;
                            }
                               
-                     }
-                     else{ 
+                     }*/
+                    // else{ 
                 
                        if(!checkTolerance(correct_node.prob,node.pro,tolerance_prob) ) { 
                          
                          if(!((linkedArray[n].prevNode.node.type=="S" ||linkdeArray_correct[m].prevNode.node.type=="S")&&checkTolerance(square_child_prob(linkedArray[n]),node.prob ,tolerance_prob))){
-                                   console.log(linkedArray[n]);
-                                   console.log(linkdeArray_correct[m]); 
+                                  // console.log(linkedArray[n]);
+                                  // console.log(linkdeArray_correct[m]); 
                          
                                    node.color="orange";
                                    node.redprob=true;
@@ -419,7 +419,7 @@ function getToleranceprob(){
                               
              
            
-                     }
+                   //  }
                          
                                                
                     
