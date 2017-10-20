@@ -407,7 +407,7 @@ function getToleranceprob(){
                 
                        if(!checkTolerance(correct_node.prob,node.pro,tolerance_prob) ) { 
                          
-                         if!((linkedArray[n].prevNode.node.type=="S" ||linkdeArray_correct[m].prevNode.node.type=="S")&&checkTolerance(square_child_prob(linkedArray[n]),node.prob ,tolerance_prob)){
+                         if(!((linkedArray[n].prevNode.node.type=="S" ||linkdeArray_correct[m].prevNode.node.type=="S")&&checkTolerance(square_child_prob(linkedArray[n]),node.prob ,tolerance_prob))){
                                    console.log(linkedArray[n]);
                                    console.log(linkdeArray_correct[m]); 
                          
