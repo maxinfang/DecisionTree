@@ -87,8 +87,6 @@ function square_child_prob(lnode) {
 }
  
 
- 
-
 function circle_EMV(lnode) {
     var ch = lnode.nextNodes; 
     var sum = 0;
