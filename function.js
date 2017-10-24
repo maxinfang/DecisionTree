@@ -81,7 +81,7 @@ function square_child_prob(lnode,tolerance_emv) {
   
   
   
-    if (checkTolerance(lnode.node.emv,square_EMV(parentnode),tolerance_emv)) {
+    if (lnode.node.emv == square_EMV(parentnode) ) {
       
       return 1;
     }
