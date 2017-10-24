@@ -75,7 +75,7 @@ function square_EMV(lnode){
 
 }
 
-function square_child_prob(lnode,tolerance_emv) { 
+function square_child_prob(lnode) { 
     var parentnode = lnode.prevNode;  
   
     if (lnode.node.emv == square_EMV(parentnode) ) {
