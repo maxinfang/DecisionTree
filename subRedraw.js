@@ -492,7 +492,7 @@ $(document).ready(function()  {
                      }
                
              if(node.parentID !=""){
-                    if(!checkTolerance(sub_node.node.prob,node.pro,tolerance_prob) ) { 
+                    if(!checkTolerance(sub_node.node.prob,node.prob,tolerance_prob) ) { 
                          
                            
                          if(!((sub_node.prevNode.node.type=="S" ||linkedArray[n].prevNode.node.type=="S")&&checkTolerance(square_child_prob(sub_node),sub_node.node.prob ,tolerance_prob))){

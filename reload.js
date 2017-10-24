@@ -405,7 +405,7 @@ function getToleranceprob(){
                      }*/
                     // else{ 
                 
-                       if(!checkTolerance(correct_node.prob,node.pro,tolerance_prob) ) { 
+                       if(!checkTolerance(correct_node.prob,node.prob,tolerance_prob) ) { 
                          
                          
                            console.log(node.value);
