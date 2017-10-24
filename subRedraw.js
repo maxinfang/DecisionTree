@@ -492,27 +492,17 @@ $(document).ready(function()  {
                      }
                
              if(node.parentID !=""){
-                     if(node.type=='S'){ 
-                       
-     
-                       if(!checkTolerance(sub_node.node.prob,square_child_prob(sub_node), tolerance_prob) && !checkTolerance(sub_node.node.prob,node.prob ,tolerance_prob)  )  {
-                                     node.color="orange";// making  prob  box red
-                                     node.redprob=true;
-                           }
-                              
-                     }
-                     else{
+                    if(!checkTolerance(sub_node.node.prob,node.pro,tolerance_prob) ) { 
+                         
                            
-                               if(!checkTolerance(sub_node.node.prob,node.prob ,tolerance_prob))  {
-                                     node.color="orange";
-                                     node.redprob=true;
+                         if(!((sub_node.prevNode.node.type=="S" ||linkedArray[n].prevNode.node.type=="S")&&checkTolerance(square_child_prob(sub_node.node.prob,tolerance_emv),sub_node.prob ,tolerance_prob))){
+                                 
+                                   node.color="orange";
+                                   node.redprob=true;
+                                   }
                                    
-                                   // making  prob  box red
                            }
                               
-                     
-                     
-                     }
                
                // console.log(sub_node.nextNodes);
                // console.log(node.nextNodes);
