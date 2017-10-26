@@ -18,7 +18,7 @@ function addShapewithColor(type,dragzone,color,dotcolor,outlinecolor){
   if(dotcolor =="red") {dotColor="red";Color ="#ffa500";}
   else {dotColor="#456"}
   if(outlinecolor =="outlinered") { strokecolor="red";  }
-  else { strokecolor="balck";}
+  else { strokecolor="black";}
   
   
   if (type=="T") {addTriangle(dragzone);}

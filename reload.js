@@ -337,6 +337,7 @@ function getToleranceprob(){
         var  node= linkedArray[n].node; 
        
             node.color="red"; 
+            
        
          for(m=0; m< linkdeArray_correct.length;m++){  
                var correct_node= linkdeArray_correct[m].node;  
@@ -356,7 +357,14 @@ function getToleranceprob(){
                     
                    }
                 
-                     
+                     console.log("strange sahpe---->>>>>>>>>>>>>>>>");
+                     console.log(node);
+                     console.log(correct_node);
+                     console.log(node.type.trim());
+                     console.log(correct_node.type.trim());
+                     console.log( node.type.trim() != correct_node.type.trim());
+                     console.log("end of strange sahpe <<<<<<<---------");
+                
                     if(node.type.trim() != correct_node.type.trim())  {
                       node.outlinecolor="outlinered";
                       node.color ="orange";
