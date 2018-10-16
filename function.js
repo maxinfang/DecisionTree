@@ -118,17 +118,22 @@ function Node(id,type,parent,top,left,selectvalue,emv,prob){
 // this function will clean up the symbols gerented by MAPLETA
 function String_clean(str){
   
-             str = str.replace("(","");
-             str = str.replace(")","");
-             str = str.replace("*","");
+           //  str = str.replace("(","");
+           //  str = str.replace(")","");
+           //  str = str.replace("*","");
        return str;
   
       }
  
 function deserialise(string){
   
-       
-       
+       console.log(string);
+       string= string.replace(/\*/g, '');
+         string= string.replace(/\(/g, '');
+         string= string.replace(/\)/g, '');
+         
+       console.log(string)
+     
        if(string.indexOf('b') == -1){ 
         var array= new Array();
         return array;

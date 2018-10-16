@@ -105,7 +105,9 @@ var element=parent.document.getElementById(namespaceforSub);
    
   //console.log(element.innerHTML);
   
-  return String_clean(element.innerHTML);
+   // var cleaned_string= String_clean(element.innerHTML);
+ //   console.log(cleaned_string);
+    return element.innerHTML;//cleaned_string;
   }
 
  var op = getEntry();
