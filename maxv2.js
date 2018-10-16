@@ -104,7 +104,8 @@ function getSubmission(){
 var element=parent.document.getElementById(namespaceforSub);
    
   //console.log(element.innerHTML);
-  return element.innerHTML;
+  
+  return String_clean(element.innerHTML);
   }
 
  var op = getEntry();

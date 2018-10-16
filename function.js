@@ -112,6 +112,18 @@ function Node(id,type,parent,top,left,selectvalue,emv,prob){
        this.prob="";
        this.parentlist=[]; 
      }  
+
+/********************/
+// wrong type of maple Ta quesiton, will created ( ) *
+// this function will clean up the symbols gerented by MAPLETA
+function String_clean(str){}{
+  
+             str = str.replace("(","");
+             str = str.replace(")","");
+             str = str.replace("*","");
+       return str;
+  
+      }
  
 function deserialise(string){
   

@@ -66,8 +66,7 @@ function getToleranceprob(){
         
       for(n=0; n<myNodes.length;n++){ 
        
-      var node=myNodes[n];  
-       
+      var node=myNodes[n];   
       var linkedNode= new NodeClass(node)
       //console.log(linkedNode);
       linkedArray.push(linkedNode);  
@@ -76,8 +75,7 @@ function getToleranceprob(){
       
        for(n=0; n<myNodes_correct.length;n++){ 
        
-      var node=myNodes_correct[n];  
-      
+      var node=myNodes_correct[n];   
       var linkedNode_correct= new NodeClass(node)
       //console.log(linkedNode);
       linkdeArray_correct.push(linkedNode_correct);  
@@ -97,8 +95,9 @@ function getToleranceprob(){
           var children= new Array(); 
               for(var n=0; n<linkedArray2.length;n++){ 
                 var  thisnode= linkedArray2[n];  
-                var node = thisnode.node;
+                var node = thisnode.node; 
                 var pID= thisnode.node.parentID;  
+                
                if(pID== linkedNode.id){
                  thisnode.prevNode= linkedNode; 
                  children.push(thisnode); 
@@ -466,14 +465,14 @@ function getToleranceprob(){
       
       
        for(var n=0; n<linkdeArray_correct.length;n++){
-        var   node= linkdeArray_correct[n].node;
-        console.log( node); 
+         
+        var node= linkdeArray_correct[n].node;
+        console.log(node); 
       } 
           
        
      for(var n=0; n<linkedArray.length;n++){
-        var   node= linkedArray[n].node;
-         
+        var   node= linkedArray[n].node; 
         drawnode(node);
  
       } 
