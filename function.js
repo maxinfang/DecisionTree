@@ -116,7 +116,7 @@ function Node(id,type,parent,top,left,selectvalue,emv,prob){
 /********************/
 // wrong type of maple Ta quesiton, will created ( ) *
 // this function will clean up the symbols gerented by MAPLETA
-function String_clean(str){}{
+function String_clean(str){
   
              str = str.replace("(","");
              str = str.replace(")","");
