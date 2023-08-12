@@ -19,10 +19,11 @@ if(array[0] != "question" && array[0] !='"question'){
 
  var namespaceforEntry = array[0]+"_"+array[1]+"_entry"; 
  var namespaceforLabel= array[0]+"_"+array[1]+"_label"; 
+ var namespaceforInput = "input_"+array[1]; 
  var op= new Array();
  
 console.log(namespaceforSub);
-if(parent.document.getElementById(namespaceforSub))
+if(parent.document.getElementById(namespaceforAnswer))
    {mode ="submission";
        console.log("submode");
    }
@@ -101,14 +102,9 @@ function getHistory(){
 
 
 function getSubmission(){
-var element=parent.document.getElementById(namespaceforSub);
-   
-  //console.log(element.innerHTML);
-  
-   // var cleaned_string= String_clean(element.innerHTML);
- //   console.log(cleaned_string);
-    return element.innerHTML;//cleaned_string;
-  }
+  parentintputbox=$("input[name*='" + namespaceforInput + "']", window.parent.document);
+  return parentintputbox[0].value;
+}
 
  var op = getEntry();
  
@@ -146,7 +142,7 @@ $(document).ready(function()  {
   
   
   if(mode=="student"){
-    var parentintputbox=$("input[name^='ans.'][name$='.0']", window.parent.document) //parent.document.getElementsByName("ans.0.0");
+    var parentintputbox=$("input[name*='" + namespaceforInput + "']", window.parent.document);
           
   //  parentintputbox[0].addEventListener("change", function(e) 
     //    { parent.location.reload();

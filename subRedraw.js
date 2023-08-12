@@ -13,6 +13,7 @@
  var namespaceforAnswer= array[0]+"_"+array[1]+"_answer"; 
  var namespacefortoleranceEMV = array[0]+"_"+array[1]+"_tolerance_EMV"; 
  var namespacefortoleranceprob = array[0]+"_"+array[1]+"_tolerance_prob"; 
+ var namespaceforInput = "input_"+array[1]; 
 
  var op= new Array();
  
@@ -64,9 +65,8 @@ function getToleranceprob(){
 }
 
 function getsubmission(){
-    var element= parent.document.getElementById(namespaceforSubmit);
-   
-    return element.innerHTML;
+  parentintputbox=$("input[name*='" + namespaceforInput + "']", window.parent.document);
+  return parentintputbox[0].value;
  } 
 
 function getCorrectAnswer(){

@@ -31,7 +31,10 @@ function drawnode(node){
       $(dragzone).uniqueId();
       var currentId=$(dragzone).attr("id");
      var deleteId  =$(elem).attr("id");
-    if(mode =="student") { $(newdiv).append(deletezone); } 
+    if(mode =="student") {
+      $(newdiv).append(deletezone);
+      node.color="blue";
+    } 
       $(newdiv).append(dragzone); 
        
      // console.log(node);
