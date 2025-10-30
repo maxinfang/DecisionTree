@@ -473,7 +473,7 @@ function sentToparentPage()
     
    if (statuschange   == true){ 
      console.log("relaod");
-   parent. pageFullyLoaded();
+   //parent.pageFullyLoaded();
    console.log("call orignal function");}
    console.log("save:"+answervalue);
   }
